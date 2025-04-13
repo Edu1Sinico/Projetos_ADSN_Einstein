@@ -7,6 +7,6 @@ int main(){
 		printf("Altitude do aviao: %d; \n\n", altitude);
 		altitude += 1000;	
 	}
-	
+	 
 	return 0;
 }

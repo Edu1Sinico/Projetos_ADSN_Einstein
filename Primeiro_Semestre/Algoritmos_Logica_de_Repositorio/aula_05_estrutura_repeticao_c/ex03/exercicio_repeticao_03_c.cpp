@@ -15,6 +15,7 @@ int main(){
 			while (senha != 1234){
 				printf("\nSenha incorreta, por favor informe a senha novamente: ");
 				scanf("%d", &senha);
+				validar = false;
 			}
 			
 		validar = true;
