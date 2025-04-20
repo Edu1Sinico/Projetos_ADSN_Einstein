@@ -2,33 +2,43 @@
 
 void escadariaSagrada(int tamanho){
     //Inicio - A Escadaria Sagrada
-
-    if(tamanho%2==0){
-        printf("Valor incorreto: o numero digitado e par");
+    
+    int meio = 0;
+    
+    printf("Exercicio da Escadaria Sagrada (%d).\n\n", tamanho);
+	
+	//	Validando se a altura é ímpar.
+    if(tamanho%2 == 0){
+        printf("A altura informada e par.\n");
     }
-    else if(tamanho>=3 && tamanho<=11){
-        for(int i=tamanho/1.5;i>=1;i--){
-            for(int j=0;j<tamanho;j++){
+    // Verificando se o valor da altura da escaria está entre 3 e 11.
+    else if(tamanho >= 3 && tamanho <= 11){
+    	
+    	meio = tamanho/2 + 1; // Divide o tamanho no meio e "arredonda" para cima.
+    	
+    	// Parte decrescente da escada.
+    	//Linhas
+        for(int i = meio; i >= 1; i--){
+        	// Colunas
+            for(int j = 0; j < tamanho; j++){
                 printf("%d ",i);
             }
             printf("\n");
         }
-        for(int i = 1;i<tamanho/1.5;i++){
-            for(int j=0;j<tamanho;j++){
-            	if(i != 1){
-					printf("%d ",i);
-				}
+        
+        // Parte crescente da escada.
+        //Linhas
+        for(int i = 2; i <= meio; i++){
+        	// Colunas
+            for(int j = 0; j < tamanho; j++){
+				printf("%d ",i);
             }
-            if(i != 1){
-            	printf("\n");
-        	}
+            printf("\n");
         }
     }
     else{
-        printf("valor tem que estar entre 3 e 11.");
+        printf("Valor da altura impar precisa estar entre 3 e 11.\n");
     }
-
-
 
 }
 

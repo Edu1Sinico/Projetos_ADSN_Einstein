@@ -9,7 +9,7 @@ void somaMaximaMinima(int valores[5]){
 	int valorMax = 0;
 	int valorMin = 0;
 	int maiorValor = 0;
-	int menorValor = 9999;
+	int menorValor = 10000;
 	int temp = 0;
 	
 	printf("Exercicio de Soma de Maxima e Minima\n\n");
@@ -42,8 +42,8 @@ void somaMaximaMinima(int valores[5]){
 	valorMax = valorTotal - menorValor;
 	
 	printf("%d %d\n", valorMin, valorMax);
-	printf("Valor minimo da soma entre os numeros do vetor: %d\n", valorMin);
-	printf("Valor maximo da soma entre os numeros do vetor: %d\n", valorMax); 
+//	printf("Valor minimo da soma entre os numeros do vetor: %d\n", valorMin);
+//	printf("Valor maximo da soma entre os numeros do vetor: %d\n", valorMax); 
 	
 	//Fim - Soma Mínima e Máxima
 }

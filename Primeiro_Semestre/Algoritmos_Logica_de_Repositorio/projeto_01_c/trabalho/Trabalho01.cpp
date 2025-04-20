@@ -43,14 +43,11 @@ void comparandoPontuacoes(int pontosAlice[3], int pontosBob[3]){
 void detalheEscada(int tamanho){
 //Inicio - Detalhe da Escada
 	
-	// Matriz da escada
-	char escada[tamanho][tamanho];
-	
 	char espaco = ' ';
 	char degrau = '#';
 	int cont = 1;
 	
-	printf("Exercicio da Detalhe da Escada (%d)\n\n", tamanho);
+	printf("Exercicio do Detalhe da Escada (%d)\n\n", tamanho);
 	
 	// For de linhas:	
 	for (int i = 1; i <= tamanho; i++){
@@ -58,11 +55,10 @@ void detalheEscada(int tamanho){
 		for(int j = tamanho; j >=  1; j--){
 			// Verifica se a variável cont é < que o número de colunas (j)			
 			if(cont < j){
-				escada[i][j] = espaco; // Adiciona o espaço na matriz
+				printf("%c", espaco); // Adiciona o espaço no printf
 			} else{
-				escada[i][j] = degrau; // Adiciona o degrau na matriz
+				printf("%c", degrau); // Adiciona o degrau no printf
 			}
-			printf("%c", escada[i][j]);
 		}
 		// incrementa na variável cont, após a troca da linha.		
 		cont++;
@@ -79,7 +75,7 @@ void somaMaximaMinima(int valores[5]){
 	int valorMax = 0;
 	int valorMin = 0;
 	int maiorValor = 0;
-	int menorValor = 9999;
+	int menorValor = 10000;
 	int temp = 0;
 	
 	printf("Exercicio de Soma de Maxima e Minima\n\n");
@@ -112,18 +108,50 @@ void somaMaximaMinima(int valores[5]){
 	valorMax = valorTotal - menorValor;
 	
 	printf("%d %d\n", valorMin, valorMax);
-	printf("Valor minimo da soma entre os numeros do vetor: %d\n", valorMin);
-	printf("Valor maximo da soma entre os numeros do vetor: %d\n", valorMax); 
 	
 	//Fim - Soma Mínima e Máxima
 }
 
 void escadariaSagrada(int tamanho){
-	//Inicio - A Escadaria Sagrada
+    //Inicio - A Escadaria Sagrada
+    
+    int meio = 0;
+    
+    printf("Exercicio da Escadaria Sagrada (%d).\n\n", tamanho);
 	
-	printf("Substitua esta linha pelo seu algorimo - escadariaSagrada");
-	
-	//Fim - A Escadaria Sagrada
+	//	Validando se a altura é ímpar.
+    if(tamanho%2 == 0){
+        printf("A altura informada e par.\n");
+    }
+    // Verificando se o valor da altura da escaria está entre 3 e 11.
+    else if(tamanho >= 3 && tamanho <= 11){
+    	
+    	meio = tamanho/2 + 1; // Divide o tamanho no meio e "arredonda" para cima.
+    	
+    	// Parte decrescente da escada.
+    	//Linhas
+        for(int i = meio; i >= 1; i--){
+        	// Colunas
+            for(int j = 0; j < tamanho; j++){
+                printf("%d ",i);
+            }
+            printf("\n");
+        }
+        
+        // Parte crescente da escada.
+        //Linhas
+        for(int i = 2; i <= meio; i++){
+        	// Colunas
+            for(int j = 0; j < tamanho; j++){
+				printf("%d ",i);
+            }
+            printf("\n");
+        }
+    }
+    else{
+        printf("Valor da altura impar precisa estar entre 3 e 11.\n");
+    }
+
 }
 
 int main(){
