@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 //Nome Aluno: Eduardo Silva Sinico
-//Nome Aluno: Gustavo Arruda Basso
+//Nome Aluno: Gustavo de Arruda Carvalho Basso
 
 void comparandoPontuacoes(int pontosAlice[3], int pontosBob[3]){
 	//Inicio - Comparando as pontuações
@@ -79,23 +79,14 @@ void somaMaximaMinima(int valores[5]){
 	
 	printf("Exercicio de Soma de Maxima e Minima\n\n");
 	
-	// Verificando o maior valor da array:
 	for (int i = 0; i < 5; i++){
+		valorTotal += valores[i];
 		if (valores[i] > maiorValor){
 			maiorValor = valores[i];
 		}
-	}
-	
-	// Verificando o menor valor da array:
-	for (int i = 0; i < 5; i++){
 		if (valores[i] < menorValor){
 			menorValor = valores[i];
 		}
-	}
-	
-	// Valor total da soma:
-	for (int i = 0; i <= 5; i++){
-		valorTotal += valores[i];
 	}
 	
 	// Descobrindo o valor mínimo da soma:
