@@ -76,25 +76,20 @@ void somaMaximaMinima(int valores[5]){
 	int valorMin = 0;
 	int maiorValor = 0;
 	int menorValor = 10000;
-	int temp = 0;
 	
 	printf("Exercicio de Soma de Maxima e Minima\n\n");
 	
 	// Verificando o maior valor da array:
 	for (int i = 0; i < 5; i++){
-		temp = valores[i];
-		if (temp > maiorValor){
-			maiorValor = temp;
+		if (valores[i] > maiorValor){
+			maiorValor = valores[i];
 		}
 	}
 	
-	temp = 0;
-	
 	// Verificando o menor valor da array:
 	for (int i = 0; i < 5; i++){
-		temp = valores[i];
-		if (temp < menorValor){
-			menorValor = temp;
+		if (valores[i] < menorValor){
+			menorValor = valores[i];
 		}
 	}
 	
