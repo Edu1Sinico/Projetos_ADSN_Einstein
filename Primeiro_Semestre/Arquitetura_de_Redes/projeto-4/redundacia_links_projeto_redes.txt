@@ -1,0 +1,23 @@
+Trabalho de Redundância de Links
+
+O que é?
+
+A redundância de links refere-se à existência de múltiplas conexões (links) entre diferentes pontos de uma rede,
+garantindo que se um link falhar, o tráfego de dados possa ser roteado por outro caminho sem interrupções de serviços.
+Essa redundância é crucial para garantir a alta disponibilidade e segurança de redes, especialmente em ambientes corporativos
+onde a continuidade operacional é vital.
+
+Como implementar?
+
+Para implementar a redundâncias de links, é essencial ter múltiplos links de internet. 
+
+- Podemos criar uma topologia de malha para garantir múltiplas conexões;
+- Pode ser implementada desde da camada de acesso até a camada de transporte do modelo OSI;
+- Implementar nos equipamentos de rede como roteadores e firewalls que suportam mais de um link;
+
+
+Quais são os benefícios (Por que da escolha)?
+
+A redundância de dados é essencial para garantir alta performance e segurança de redes, permitindo com que a rede funcione mesmo em casos de falhas, reduzindo os riscos de interrupções e percas no serviço e gera um aumento a confiabilidade.
+
+
