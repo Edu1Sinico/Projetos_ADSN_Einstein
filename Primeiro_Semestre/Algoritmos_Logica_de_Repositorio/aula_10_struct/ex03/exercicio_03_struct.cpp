@@ -25,21 +25,21 @@ int main(){
 	printf("Informe o preço de custo: ");
 	scanf("%f", &l.precoCusto);
 	
-	// Calculo do percentual de aumento
-	int percentualAumento = l.numPaginas / 100; // Realiza o percentual de aumento
+	// Calcula quantos blocos de 100 o livro possui, gerando o percentual de aumento. Ex.: 250/100 = 2% de percentual de aumento
+	int percentualAumento = l.numPaginas / 100;
 	
-	// Verifica se tem resto na divisão
+	// Verifica se o número de páginas possui um resto, assim, adiciona mais um para o percentual de aumento. Ex.: 250%100 = 50, ou seja, percentualAumento é 2 + 1 = 3;
 	if(l.numPaginas%100 != 0){
 		percentualAumento++;	
 	}
 	
-	// Calcula o percentual de aumento em 10%
+	// Transforma o percentual de aumento em 10%. Ex.: 3x10 = 30%
 	percentualAumento = percentualAumento * 10;
 	
-	// Calculo do preco de venda
+	// Calculo do preco de venda de acordo do a fórmula abaixo
 	l.precoVenda = l.precoCusto * (1+((float)percentualAumento/100));
 	
-	// Finalizar o resto
+	// Finalizar o resto...
 	
     return 0;
 }
