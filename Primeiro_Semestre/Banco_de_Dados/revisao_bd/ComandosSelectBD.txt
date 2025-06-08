@@ -1,0 +1,44 @@
+-- Comandos de Select
+
+-- Buscar todos os elementos
+select * from mercadoria;
+
+-- Procura o ID
+select * from mercadoria where id_mercadoria = 1;
+
+-- Procurando a palavra "File"
+select * from mercadoria where descricao_mercadoria like '%file%';
+
+-- Procurando a palavra diferente de "File"
+select * from mercadoria where descricao_mercadoria not like '%file%';
+
+-- Concatenação (juntar caracteres)
+select concat('* ', descricao_mercadoria, ' *') descricao from mercadoria;
+select concat(id_mercadoria, ' - ', descricao_mercadoria) descricao from mercadoria;
+
+-- Conta o numero de caracteres
+select descricao_mercadoria len(descricao_mercadoria) tamanho_descricao from mercadoria;
+
+-- Trocar os nomes da coluna
+select descricao_mercadoria mercadoria, id_mercadoria id from mercadoria;
+
+-- Deixa os caracteres em minúsculos;
+select lower(descricao_mercadoria) descricao_minuscula from mercadoria;
+
+-- Menor, Maior, Média e o ABS (Valor absoluto ou sempre positivo):
+select min(valor_mercadoria) menor,
+       max(valor_mercadoria) maior,
+       AVG(valor_mercadoria) media,
+       abs(valor_mercadoria) valor_absoluto
+from mercadoria;
+
+-- substituir os valor para exibição
+select descricao_mercadoria,
+       replace(descricao_mercadoria, 'a', 'o') descricao
+from mercadoria;
+
+-- Pega uma parte da String (Palavra) / Pega a primeira letra até a quinta letra
+select descricao_mercadoria,
+       SUBSTRING(descricao_mercadoria, 1, 5) diminutivo
+from mercadoria;
+
