@@ -31,6 +31,9 @@ Operações:
 
 Outros:
 - Telefone
+- Cargo
+- Turno
+- Status
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -42,7 +45,7 @@ Jogos(id_jogo (PK), id_tipo (FK), id_est_desenv (FK), nome, faixa_etaria);
 
 Brinquedos(id_brinquedo (PK), id_tipo (FK), id_area_desenv (FK), nome, faixa_etaria);
 
-Tipos(id_tipo (PK), categoria);
+Tipos(id_tipo (PK), categoria, origem, quantidade);
 
 estagio_desenvolvimento(id_est_desenv (PK), descricao);
 
@@ -56,7 +59,7 @@ Criança(id_crianca (PK), id_responsavel (FK), nome, idade, CPF (Unique));
 
 Responsável(id_responsavel (PK), id_telefone(FK), nome, endereço, CPF (Unique));
 
-Funcionário(id_funcionario (PK), id_telefone (FK), nome, idade, CPF (Unique), cargo, turno, status);
+Funcionário(id_funcionario (PK), id_telefone (FK), id_cargo (FK), id_turno(FK), id_status (FK), nome, idade, CPF (Unique));
 
 Doador(id_doador (PK), id_telefone (FK), nome, endereco, CPF (Unique));
 
@@ -70,27 +73,21 @@ Operações:
 
 Doação(id_doacao (PK), id_doador (FK), id_funcionario (FK), id_tipo (FK), data_doacao, quantidade); --O funcionário registrará e realiza o controle da doação
 
-Compra(id_compra (PK), id_tipo (FK), id_fornecedor (FK), id_funcionario (FK), valor, data_compra, quantidade); --O funcionário realizará a compra e controle dos produtos / Verificar nota fiscal;
+Compra(id_compra (PK), id_tipo (FK), id_fornecedor (FK), id_funcionario (FK), valor_venda, data_compra, quantidade); --O funcionário realizará a compra e controle dos produtos / Verificar nota fiscal;
 
-Desenvolvimento();
+Desenvolvimento(id_desenvolvimento (PK), id_tipo (FK), id_funcionario (FK), id_crianca(FK), quantidade);
 
-Devolução(id_devolucao (PK),  id_funcionario (FK), id_crianca (FK), data_devolucao, estado, periodo_atraso); --Verificar com o grupo para ver se cria uma tabela extra ou junta tudo na tabela de "Empréstimo".
+Devolução(id_devolucao (PK),  id_funcionario (FK), id_crianca (FK), id_tipo(FK), data_devolucao, estado, periodo_atraso);
 
 (Saída)
 
 Exclusão(id_exclusao (PK), id_jogo (FK), id_brinquedo (FK), id_funcionario (FK), descricao, data_exclusao);
 
 Descarte(id_descarte (PK), id_jogo(FK), id_brinquedo (FK), id_funcionario (FK), descricao, data_descarte);
-
+	
 Empréstimo(id_emprestimo (PK), id_jogo(FK), id_brinquedo (FK), id_funcionario (FK), id_crianca (FK), id_devolucao (FK), data_emprestimo, período);
 
-===========================================================================
-
-Financeiro:
-
-NotaFiscal();
-
-ItemNotaFiscal();
+Venda(id_venda (PK), id_jogo (FK), id_brinquedo (FK), id_funcionario (FK), id_crianca (FK), valor_unitario, data_venda, quantidade);
 
 ===========================================================================
 
@@ -98,3 +95,10 @@ Outro:
 
 Telefone(id_telefone (PK), DDD, numero);
 
+Cargo(id_cargo (PK), cargo);
+
+Turno(id_cargo (PK), turno);
+
+Status(id_cargo (PK), status); --Status do funcionário (Disponível, indisponível, de férias, afastado e etc.)
+
+Estado(id_estado, descricao); --Estado do brinquedo ou do jogo (Bom estado, usado, desgastado e etc.)	
