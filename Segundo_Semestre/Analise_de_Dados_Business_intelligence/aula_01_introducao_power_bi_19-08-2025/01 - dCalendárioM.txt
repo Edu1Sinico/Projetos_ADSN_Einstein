@@ -1,0 +1,15 @@
+Criar dCalendário no M
+
+= List.Dates (#date(2015,1,1), 365 * 3, #duration(1,0,0,0))
+
+Esta função tem 3 partes, onde na primeira definimos a data inicial da lista. Utilizamos a função “#date” para colocar esta data inicial no formato que o Power Query entenda.
+
+Na segunda parte é definido até quando a lista será completada. Colocamos aqui 3 anos, representado na expressão “365 * 3”. Note que fazendo desta forma é possível utilizar expressões com esta, não precisa fazer o cálculo de cabeça.
+
+E por fim, na terceira parte será definido como a lista será incrementada, no caso utilizamos a função “#duration” e definimos o incremento em 1 dia por vez. Na função “#duration” é possível definir os dias, horas, minutos, segundos. No caso (1,0,0,0) foi definido 1 dia, 0 horas, 0 minutos e 0 segundos.
+
+-- Transform to Table na aba Transformar
+
+Seguir com as duplicações de colunas e formatações
+
+

@@ -1,0 +1,24 @@
+dCalendario pegando data minima e max de acordo com tabela
+
+let
+    //DataInicial = #date(2018,1,1),
+    //DataFinal = #date(2018,12,31),
+    Buffer = List.Buffer(Vendas[Data Pedido] & Vendas[Data Faturamento]),
+    DataInicial = Date.StartOfYear(List.Min(Buffer)),
+    DataFinal = Date.EndOfYear(List.Max(Buffer)),
+    QtdeDias = Duration.Days(DataFinal - DataInicial) + 1,
+    Lista = List.Dates(DataInicial, QtdeDias, #duration(1,0,0,0)),
+    Tabela = #table(type table[Data=date], List.Transform(Lista, each {_})),
+    #"Ano Inserido" = Table.AddColumn(Tabela, "Ano", each Date.Year([Data]), Int64.Type),
+    #"Nome do Mês Inserido" = Table.AddColumn(#"Ano Inserido", "Nome do Mês", each Date.MonthName([Data]), type text),
+    #"Mês Inserido" = Table.AddColumn(#"Nome do Mês Inserido", "Mês", each Date.Month([Data]), Int64.Type),
+    #"Dia Inserido" = Table.AddColumn(#"Mês Inserido", "Dia", each Date.Day([Data]), Int64.Type),
+    #"Trimestre Inserido" = Table.AddColumn(#"Dia Inserido", "Trimestre", each Date.QuarterOfYear([Data]), Int64.Type),
+    #"Nome do Dia Inserido" = Table.AddColumn(#"Trimestre Inserido", "Nome do Dia", each Date.DayOfWeekName([Data]), type text),
+    #"Primeiros caracteres extraídos" = Table.TransformColumns(#"Nome do Dia Inserido", {{"Nome do Mês", each Text.Start(_, 3), type text}, {"Nome do Dia", each Text.Start(_, 3), type text}}),
+    #"Prefixo Adicionado" = Table.TransformColumns(#"Primeiros caracteres extraídos", {{"Trimestre", each "T" & Text.From(_, "pt-BR"), type text}}),
+    #"Dia da Semana Inserido" = Table.AddColumn(#"Prefixo Adicionado", "Dia da Semana", each Date.DayOfWeek([Data]), Int64.Type),
+    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Dia da Semana Inserido", "Mês e Ano", each Text.Combine({[Nome do Mês], Text.From([Ano], "pt-BR")}, " "), type text),
+    #"Personalização Adicionada" = Table.AddColumn(#"Coluna Mesclada Inserida", "Mês e Ano Num", each [Ano] * 100 + [Mês], Int64.Type)
+in
+    #"Personalização Adicionada"
