@@ -1,6 +1,6 @@
 Criar dCalendário no M
 
-= List.Dates (#date(2015,1,1), 365 * 3, #duration(1,0,0,0))
+= List.Dates (#date(2012,1,1), 365 * 4, #duration(1,0,0,0))
 
 Esta função tem 3 partes, onde na primeira definimos a data inicial da lista. Utilizamos a função “#date” para colocar esta data inicial no formato que o Power Query entenda.
 
