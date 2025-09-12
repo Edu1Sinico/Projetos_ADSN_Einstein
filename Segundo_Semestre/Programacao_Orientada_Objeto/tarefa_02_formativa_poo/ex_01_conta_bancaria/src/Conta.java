@@ -25,7 +25,7 @@ public class Conta {
 
     // Método para sacar créditos da conta
     public double sacarSaldo(double saque){
-        if(saque > 0 && this.saldo > saque && saque > 3){
+        if(saque > 0 || this.saldo > saque || saque > 3){
             return this.saldo -= (saque-3);
         }
         return 0;

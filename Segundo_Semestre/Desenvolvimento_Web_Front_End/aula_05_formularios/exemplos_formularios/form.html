@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+
+<style>
+    label{
+        display: inline-block;
+        width: 80px;
+        text-align: left;
+        line-height: 2;
+        margin-left: 10px;
+    }
+
+    .btnEnviar{
+        margin-left: 10px;
+    }
+
+
+</style>
+
+<body>
+    <h1>Cadastro</h1>
+    <form action="" method="post">
+        <label for="nome">Nome: </label>
+        <input type="text" name="nome" id="nome" style="width: 200px;">
+        <br>
+        <label for="endereco">Endereço: </label>
+        <input type="text" name="endereco" id="endereco" style="width: 200px;">
+        <br>
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email" style="width: 200px;">
+        <br>
+        <label for="telefone">Telefone: </label>
+        <input type="tel" name="telefone" id="telefone" placeholder="(99) 99999-9999" style="width: 200px;">
+        <br>
+        <label for="url">URL: </label>
+        <input type="url" name="url" id="url" placeholder="https://example.com/" style="width: 200px;">
+        <br>
+        <label for="idade">Idade: </label>
+        <input type="number" name="idade" id="idade" min="0" max="100" value="0" style="width: 200px;">
+        <br>
+        <label for="qtde">Quantidade: </label>
+        <input type="range" name="idade" id="qtde"min="0" max="100" value="0" oninput="valor_qtde.value = qtde.value" style="width: 200px;">
+        <output name="valor_qtde" id="valor_qtde">0</output>
+        <br>
+        <br>
+        <input type="submit" value="Enviar" class="btnEnviar">
+        <input type="reset" value="Limpar">
+    
+    </form>
+</body>
+
+</html>
