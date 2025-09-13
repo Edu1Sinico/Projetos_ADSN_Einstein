@@ -19,21 +19,17 @@ public class Main {
             System.out.println("4 - Apaga um produto pelo nome");
             System.out.println("0 - Encerra o programa");
 
-            System.out.print("\nOpção: ");
-            opcao = scan.nextInt();
+            opcao = Funcoes.digitaInt("\nDigite a opção desejada: ");
 
             switch (opcao) {
                 case 0:
                     System.out.println("\nObrigado por utilizar o meu programa.");
                     break;
                 case 1:
-                    System.out.print("\nDigite o código: ");
-                    codigo = scan.nextInt();
+                    codigo = Funcoes.digitaInt("\nDigite o código: ");
                     scan.nextLine();
-                    System.out.print("Digite o nome do produto: ");
-                    nome = scan.nextLine();
-                    System.out.print("Digite o valor: ");
-                    valor = scan.nextFloat();
+                    nome = Funcoes.digitalString("Digite o nome do produto: ");
+                    valor = Funcoes.digitaFloat("Digite o valor: ");
                     scan.nextLine();
                     ListaProdutos.add(new Produtos(codigo,nome,valor));
                     break;
