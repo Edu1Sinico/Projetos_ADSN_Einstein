@@ -78,8 +78,20 @@
         <label for="upload">Upload do Arquivo: </label>
         <input type="file" name="upload" id="upload">
         <br>
+        <label for="estados">Estados: </label>
+        <select name="estados" id="estados" style="width: 200px;">
+            <option value="SP">São Paulo</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="PA">Paraná</option>
+            <option value="GO">Goiás</option>
+        </select>
+        <br>
         <label for="mensagem">Mensagem: </label><br>
-        <textarea name="mensagem" id="mensagem" rows="5" cols="30"></textarea>
+        <textarea name="mensagem" id="mensagem" rows="5" cols="30" style="resize: none"></textarea>
         <br>
         <input type="submit" value="Enviar" class="btnEnviar">
         <input type="reset" value="Limpar">
