@@ -1,13 +1,16 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         ArrayList<ListaTelefonica> ListaTelefonica = new ArrayList<>();
-        int opcao = 0, cont = 0, decisao = 0;
+        int opcao = 0, decisao = 0;
         String nome, telefone, email;
         boolean encontrado = false, decisaoExcluir = false;
+        String[] dados;
 
         do {
             System.out.println("\n----- CONTATOS -----");
@@ -22,93 +25,129 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("\n----- LISTA DE CONTATOS -----");
-                    for (ListaTelefonica contato : ListaTelefonica) {
-                        if(contato != null){
-                            cont++;
-                            System.out.println(cont + "º "
-                                    + contato.getNome() + " - "
-                                    + contato.getEmail() + " - "
-                                    + contato.getTelefone() + ";");
-                            encontrado = true;
-                        } else{
+                    try {
+                        String conteudo = Arquivo.carregar("ListaTelefonica.txt");
+                        if (conteudo == null || conteudo.isEmpty()) {
                             encontrado = false;
+                            break;
                         }
-                    }
-                    if(!encontrado){
+
+                        dados = conteudo.split("\n"); // cada linha do arquivo
+
+                        System.out.println("\n----- LISTA DE CONTATOS -----");
+                        for (int i = 0; i < dados.length; i += 3) { // Cada dado ocupa 3 linhas no arquivo
+                            if (i + 2 < dados.length) { // Garante que o for não acesse um arquivo que está com dados incompletos
+                                System.out.println(((i / 3) + 1) + "º "
+                                        + dados[i] + " - " // Posição do nome
+                                        + dados[i + 1] + " - " // Posição do email
+                                        + dados[i + 2] + ";"); // Posição do telefone
+                                encontrado = true;
+                            }
+                        }
+
+                        if (!encontrado) {
                             System.out.println("\nNenhum elemento foi encontrado.");
+                        }
+                        encontrado = false;
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    cont = 0;
-                    encontrado = false;
                     break;
                 case 2:
-                    System.out.println("\n----- BUSCAR CONTATO -----");
-                    System.out.print("\nInforme o nome do contato: ");
-                    nome = scan.nextLine();
-                    for (ListaTelefonica contato : ListaTelefonica) {
-                        if (contato.getNome().equals(nome)) {
-                            System.out.println("Contato(s): "
-                                    + contato.getNome() + " - "
-                                    + contato.getEmail() + " - "
-                                    + contato.getTelefone() + ";");
-                            encontrado = true;
-                        }
-                        else{
+                    try{
+                        System.out.println("\n----- BUSCAR CONTATO -----");
+                        System.out.print("\nInforme o nome do contato: ");
+                        nome = scan.nextLine();
+
+                        String conteudo = Arquivo.carregar("ListaTelefonica.txt");
+                        if (conteudo == null || conteudo.isEmpty()) {
                             encontrado = false;
+                            break;
                         }
+
+                        dados = conteudo.split("\n");
+
+                        for (int i = 0; i < dados.length; i += 3) {
+                            if (i + 2 < dados.length && dados[i].equalsIgnoreCase(nome)) { // Comparando o conteúdo da string do dado com o nome, ignorando maiúsculas ou minúsculas
+                                System.out.println("Contato(s): "
+                                        + dados[i] + " - "
+                                        + dados[i + 1] + " - "
+                                        + dados[i + 2] + ";");
+                                encontrado = true;
+                            }
+                        }
+
+                        if (!encontrado) {
+                            System.out.println("\nNenhum elemento foi encontrado.");
+                        }
+                        encontrado = false;
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    if(!encontrado){
-                        System.out.println("\nNenhum elemento foi encontrado.");
-                    }
-                    encontrado = false;
                     break;
                 case 3:
-                    System.out.println("\n----- ADICIONAR CONTATO -----");
-                    System.out.print("\nInforme o nome do contato: ");
-                    nome = scan.nextLine();
-                    System.out.print("Informe o e-mail do contato: ");
-                    email = scan.nextLine();
-                    System.out.print("Informe o telefone do contato: ");
-                    telefone = scan.nextLine();
-                    ListaTelefonica.add(new ListaTelefonica(nome, telefone, email));
+                    try {
+                        System.out.println("\n----- ADICIONAR CONTATO -----");
+                        System.out.print("\nInforme o nome do contato: ");
+                        nome = scan.nextLine();
+                        System.out.print("Informe o e-mail do contato: ");
+                        email = scan.nextLine();
+                        System.out.print("Informe o telefone do contato: ");
+                        telefone = scan.nextLine();
+                        Arquivo.salvar("ListaTelefonica.txt",nome + "\n" + email + "\n" + telefone + "\n", true);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+
                     break;
-//              Verificar problemas no método de remover!
                 case 4:
-                    System.out.println("\n----- REMOVER CONTATO -----");
-                    System.out.print("\nInforme o nome do contato: ");
-                    nome = scan.nextLine();
-                    System.out.println("\nTem certeza que você deseja excluir esse contato?\n1 - Sim\n0 - Não");
-                    decisao = Funcoes.digitaInt("\nResultado: ");
-                    do {
-                        switch (decisao) {
-                            case 1:
-                                for (ListaTelefonica contato : ListaTelefonica) {
-                                    if (contato.getNome().equals(nome)) {
-                                        ListaTelefonica.remove(contato);
-                                        System.out.println("\nContato removido com sucesso!");
-                                        encontrado = true;
-                                        decisaoExcluir = true;
-                                        break;
-                                    } else {
-                                        encontrado = false;
-                                    }
-                                }
-                                if(!encontrado){
-                                    System.out.println("\nNenhum elemento foi encontrado.");
-                                    encontrado = false;
-                                    decisaoExcluir = true;
-                                }
-                                break;
-                            case 0:
-                                System.out.println("\nOperação Cancelada!");
-                                decisaoExcluir = true;
-                                break;
-                            default:
-                                System.out.println("\nInforme uma dessas opções!");
-                                decisaoExcluir = false;
-                                break;
+                    try {
+                        System.out.println("\n----- REMOVER CONTATO -----");
+                        System.out.print("\nInforme o nome do contato: ");
+                        nome = scan.nextLine();
+
+                        String conteudo = Arquivo.carregar("ListaTelefonica.txt");
+                        if (conteudo == null || conteudo.isEmpty()) {
+                            encontrado = false;
+                            break;
                         }
-                    } while (!decisaoExcluir);
+
+                        System.out.println("\nTem certeza que você deseja excluir esse contato?\n1 - Sim\n0 - Não");
+                        decisao = Funcoes.digitaInt("\nResultado: ");
+                        do {
+                            switch (decisao) {
+                                case 1:
+                                    for (ListaTelefonica contato : ListaTelefonica) {
+                                        if (contato.getNome().equals(nome)) {
+                                            ListaTelefonica.remove(contato);
+                                            System.out.println("\nContato removido com sucesso!");
+                                            encontrado = true;
+                                            decisaoExcluir = true;
+                                            break;
+                                        } else {
+                                            encontrado = false;
+                                        }
+                                    }
+                                    if (!encontrado) {
+                                        System.out.println("\nNenhum elemento foi encontrado.");
+                                        encontrado = false;
+                                        decisaoExcluir = true;
+                                    }
+                                    break;
+                                case 0:
+                                    System.out.println("\nOperação Cancelada!");
+                                    decisaoExcluir = true;
+                                    break;
+                                default:
+                                    System.out.println("\nInforme uma dessas opções!");
+                                    decisaoExcluir = false;
+                                    break;
+                            }
+                        } while (!decisaoExcluir);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
                     break;
 
                 case 5:
