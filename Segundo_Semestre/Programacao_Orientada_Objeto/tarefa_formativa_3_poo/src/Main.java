@@ -7,6 +7,7 @@ public class Main {
         ArrayList<ListaTelefonica> ListaTelefonica = new ArrayList<>();
         int opcao = 0, cont = 0, decisao = 0;
         String nome, telefone, email;
+        boolean encontrado = false;
 
         do {
             System.out.println("\n----- CONTATOS -----");
@@ -29,11 +30,18 @@ public class Main {
                                     + contato.getNome() + " - "
                                     + contato.getEmail() + " - "
                                     + contato.getTelefone() + ";");
-                        } else {
-                            System.out.println("\nNenhum elemento foi encontrado.");
+                            encontrado = true;
+                        } else{
+                            encontrado = false;
                         }
                     }
+                    if(!encontrado){
+                            System.out.println("\nNenhum elemento foi encontrado.");
+                            encontrado = false;
+                    }
                     cont = 0;
+
+
                     break;
                 case 2:
                     System.out.println("\n----- BUSCAR CONTATO -----");
@@ -45,11 +53,15 @@ public class Main {
                                     + contato.getNome() + " - "
                                     + contato.getEmail() + " - "
                                     + contato.getTelefone() + ";");
-                            break;
+                            encontrado = true;
                         }
-                        /*else {
-                            System.out.println("Não foi possível encontrar o contato digitado.");
-                        }*/
+                        else{
+                            encontrado = false;
+                        }
+                    }
+                    if(!encontrado){
+                        System.out.println("\nNenhum elemento foi encontrado.");
+                        encontrado = false;
                     }
                     break;
                 case 3:
@@ -62,6 +74,7 @@ public class Main {
                     telefone = scan.nextLine();
                     ListaTelefonica.add(new ListaTelefonica(nome, telefone, email));
                     break;
+//              Verificar problemas no método de remover!
                 case 4:
                     System.out.println("\n----- REMOVER CONTATO -----");
                     System.out.print("\nInforme o nome do contato: ");
