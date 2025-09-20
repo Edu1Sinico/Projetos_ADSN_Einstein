@@ -7,7 +7,7 @@ public class Main {
         ArrayList<ListaTelefonica> ListaTelefonica = new ArrayList<>();
         int opcao = 0, cont = 0, decisao = 0;
         String nome, telefone, email;
-        boolean encontrado = false;
+        boolean encontrado = false, decisaoExcluir = false;
 
         do {
             System.out.println("\n----- CONTATOS -----");
@@ -37,11 +37,9 @@ public class Main {
                     }
                     if(!encontrado){
                             System.out.println("\nNenhum elemento foi encontrado.");
-                            encontrado = false;
                     }
                     cont = 0;
-
-
+                    encontrado = false;
                     break;
                 case 2:
                     System.out.println("\n----- BUSCAR CONTATO -----");
@@ -61,8 +59,8 @@ public class Main {
                     }
                     if(!encontrado){
                         System.out.println("\nNenhum elemento foi encontrado.");
-                        encontrado = false;
                     }
+                    encontrado = false;
                     break;
                 case 3:
                     System.out.println("\n----- ADICIONAR CONTATO -----");
@@ -80,29 +78,37 @@ public class Main {
                     System.out.print("\nInforme o nome do contato: ");
                     nome = scan.nextLine();
                     System.out.println("\nTem certeza que você deseja excluir esse contato?\n1 - Sim\n0 - Não");
-                    decisao = Funcoes.digitaInt("Resultado: ");
+                    decisao = Funcoes.digitaInt("\nResultado: ");
                     do {
                         switch (decisao) {
                             case 1:
                                 for (ListaTelefonica contato : ListaTelefonica) {
                                     if (contato.getNome().equals(nome)) {
                                         ListaTelefonica.remove(contato);
-                                        System.out.println("Contato removido com sucesso!");
+                                        System.out.println("\nContato removido com sucesso!");
+                                        encontrado = true;
+                                        decisaoExcluir = true;
                                         break;
+                                    } else {
+                                        encontrado = false;
                                     }
-                                    /*else {
-                                        System.out.println("Não foi possível encontrar o contato digitado.");
-                                    }*/
+                                }
+                                if(!encontrado){
+                                    System.out.println("\nNenhum elemento foi encontrado.");
+                                    encontrado = false;
+                                    decisaoExcluir = true;
                                 }
                                 break;
-                            case 2:
-                                System.out.println("Operação Cancelada!");
+                            case 0:
+                                System.out.println("\nOperação Cancelada!");
+                                decisaoExcluir = true;
                                 break;
                             default:
                                 System.out.println("\nInforme uma dessas opções!");
+                                decisaoExcluir = false;
                                 break;
                         }
-                    } while (decisao != 1 || decisao != 0);
+                    } while (!decisaoExcluir);
                     break;
 
                 case 5:
@@ -112,6 +118,9 @@ public class Main {
                     System.out.println("\nInforme uma dessas opções!");
                     break;
             }
-        } while (opcao != 0);
+        } while (opcao != 5);
     }
 }
+
+
+
