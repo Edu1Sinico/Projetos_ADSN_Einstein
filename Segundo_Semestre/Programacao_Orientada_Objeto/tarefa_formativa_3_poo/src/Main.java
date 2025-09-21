@@ -1,4 +1,4 @@
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -95,6 +95,7 @@ public class Main {
                         email = scan.nextLine();
                         System.out.print("Informe o telefone do contato: ");
                         telefone = scan.nextLine();
+                        ListaTelefonica.add(new ListaTelefonica(nome, telefone, email));
                         Arquivo.salvar("ListaTelefonica.txt",nome + "\n" + email + "\n" + telefone + "\n", true);
                     } catch (Exception e){
                         e.printStackTrace();
@@ -119,7 +120,7 @@ public class Main {
                             switch (decisao) {
                                 case 1:
                                     for (ListaTelefonica contato : ListaTelefonica) {
-                                        if (contato.getNome().equals(nome)) {
+                                        if (contato.getNome().equalsIgnoreCase(nome)) {
                                             ListaTelefonica.remove(contato);
                                             System.out.println("\nContato removido com sucesso!");
                                             encontrado = true;
@@ -133,6 +134,19 @@ public class Main {
                                         System.out.println("\nNenhum elemento foi encontrado.");
                                         encontrado = false;
                                         decisaoExcluir = true;
+                                    } else {
+                                        File arquivo = new File("ListaTelefonica.txt");
+                                        if (arquivo.exists()) {
+                                            arquivo.delete(); // Apagando o arquivo para recriarmos depois com as informações alteradas
+                                        }
+                                        // Regrava todos os contatos atuais da lista
+                                        for (ListaTelefonica contato : ListaTelefonica) {
+                                            Arquivo.salvar("ListaTelefonica.txt",
+                                                    contato.getNome() + "\n"
+                                                            + contato.getEmail() + "\n"
+                                                            + contato.getTelefone() + "\n",
+                                                    true);
+                                        }
                                     }
                                     break;
                                 case 0:
