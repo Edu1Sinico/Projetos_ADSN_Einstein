@@ -7,6 +7,29 @@
     <title>TechReact</title>
 </head>
 
+<style>
+    .main-produtos {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .produtos-section {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: red; */
+        height: 50vh;
+    }
+
+    .produto-card {
+        /* background-color: red; */
+        margin: 10px;
+    }
+</style>
+
 <body>
     <!-- Cabeçalho -->
     <header>
@@ -31,25 +54,33 @@
         <p>
             Os melhores produtos de informática com preços especiais!
         </p>
-        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" alt="Banner Tecnologia" width="600">
-    </div>
-    <section>
-        <h2>Produtos em Destaque</h2>
-        <div>
-            <img src="https://m.media-amazon.com/images/I/71jG+e7roXL._aC_SL1500_.jpg" alt="Notebook gamer" width="200">
-            <h3>Notebook Gamer</h3>
-            <p>Processador i7, 16GB RAM, SSD 512GB</p>
-            <p>R$ 5.499,00</p>
-            <button>Comprar</button>
-        </div>
+        <caption>
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" alt="Banner Tecnologia" width="600">
+        </caption>
 
-        <div>
-            <img src="https://m.media-amazon.com/images/I/61mpMH5TzkL._aC_SL1500_.jpg" alt="Notebook gamer" width="200">
-            <h3>Mouse Gamer</h3>
-            <p>Design ergonômico</p>
-            <p>R$ 89,90</p>
-            <button>Comprar</button>
-        </div>
+    </div>
+    <section class="main-produtos">
+        <h2>Produtos em Destaque</h2>
+
+        <section class="produtos-section">
+            <div class="produto-card">
+                <img src="https://m.media-amazon.com/images/I/71jG+e7roXL._aC_SL1500_.jpg" alt="Notebook gamer"
+                    width="200">
+                <h3>Notebook Gamer</h3>
+                <p>Processador i7, 16GB RAM,<br>SSD 512GB</p>
+                <p>R$ 5.499,00</p>
+                <button>Comprar</button>
+            </div>
+
+            <div class="produto-card">
+                <img src="https://m.media-amazon.com/images/I/61mpMH5TzkL._aC_SL1500_.jpg" alt="Notebook gamer"
+                    width="200">
+                <h3>Mouse Gamer</h3>
+                <p>Design ergonômico</p>
+                <p>R$ 89,90</p>
+                <button>Comprar</button>
+            </div>
+        </section>
     </section>
     <hr>
     <footer>
