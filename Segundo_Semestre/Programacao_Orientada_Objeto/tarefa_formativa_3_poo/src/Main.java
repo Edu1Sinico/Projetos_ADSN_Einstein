@@ -174,6 +174,3 @@ public class Main {
         } while (opcao != 5);
     }
 }
-
-
-
