@@ -7,7 +7,12 @@ public class SistemaAtendimento {
     requeridas. */
 
     // Método para adicionar um cliente na fila apropriada
-    public void adicionarClinete(){}
+    public void adicionarCliente(Cliente cliente){
+        if (cliente.getPrioridade() == 1)
+            filaEncadeadaPrioritaria.enqueue(cliente);
+        else
+            filaEncadeadaComum.enqueue(cliente);
+    }
 
     // Método para chamar o próximo cliente a partir do atendente que está livre
     public void chamarProximoCliente(){}
