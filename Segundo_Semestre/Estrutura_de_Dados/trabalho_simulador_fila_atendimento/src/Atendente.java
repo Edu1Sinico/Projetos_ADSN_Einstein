@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class Atendente extends Pessoa{
 
     private int disponivel; // 1 - disponivel | 0 - ocupado
@@ -19,4 +20,8 @@ public class Atendente extends Pessoa{
 public class Atendente {
 
 >>>>>>> refs/remotes/origin/main
+=======
+public class Atendente {
+
+>>>>>>> e1cec852bccf438e86f0cd1d08e140e7312bd43a
 }
