@@ -2,6 +2,7 @@ public class FilaEncadeada {
 
     private No inicio = null;
     private No fim = null;
+    private int cont = 0;
 
     // Método para verificar se a lista está vazia
     public boolean isEmpty() {
@@ -20,8 +21,43 @@ public class FilaEncadeada {
             inicio = novoNo;
             fim = novoNo;
         } else {
-            fim.proximo = novoNo; //O próximo vai apontar para o novo no
+            fim.proximo = novoNo;
         }
-        fim = novoNo; // O novo elemento adicionado ficará no fim da fila.
+        fim = novoNo;
+        cont++;
+    }
+
+    // Método para remover o pedido no início da fila
+    public Cliente dequeue(){
+        Cliente cl = null;
+        if(!isEmpty()){
+            cl = inicio.getCliente();
+            inicio = inicio.proximo;
+            if(isEmpty()){
+                fim = null;
+            }
+        }
+        cont--;
+        return cl;
+    }
+
+    // Método para retornar o primeiro valor da fila sem remove-lo
+    public Cliente peak() {
+        if (isEmpty()) {
+            return null;
+        }
+        return inicio.getCliente();
+    }
+
+    // Método para realizar a contagem de elementos da fila
+    public int size() {
+        return cont;
+    }
+
+    // Método para excluir todos os elementos da fila
+    public void clear() {
+        inicio = null;
+        fim = null;
+        cont = 0;
     }
 }

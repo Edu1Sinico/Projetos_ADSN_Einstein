@@ -4,6 +4,8 @@ public class Cliente extends Pessoa{
     private long tempoChegada; // Timestamp da chegada do cliente (para cálculo de tempo de espera).
     private String atendente;
 
+    public Cliente(){}
+
     public Cliente(String nome, String tipoAtendimento, int prioridade, long tempoChegada, String atendente) {
         super(nome);
         this.tipoAtendimento = tipoAtendimento;
@@ -11,6 +13,8 @@ public class Cliente extends Pessoa{
         this.tempoChegada = tempoChegada;
         this.atendente = atendente;
     }
+
+
 
     public String toString(){
         return null;

@@ -15,11 +15,16 @@ public class SistemaAtendimento {
     }
 
     // Método para chamar o próximo cliente a partir do atendente que está livre
-    public void chamarProximoCliente(){}
+    public void chamarProximoCliente(Atendente atendente){
+
+    }
 
     // Método para gerar um relatório ( Número total de clientes atendidos e o que ainda estão na fila).
-    public String gerarRelatorio(){
-        return "";
+    public String gerarRelatorio() {
+        return "Relatório:\n" +
+                "Clientes atendidos: " + historicoAtendimento.size() + "\n" +
+                "Clientes na fila comum: " + filaEncadeadaComum.size() + "\n" +
+                "Clientes na fila prioritária: " + filaEncadeadaPrioritaria.size();
     }
 
     // Método para desfazer o último atendimento

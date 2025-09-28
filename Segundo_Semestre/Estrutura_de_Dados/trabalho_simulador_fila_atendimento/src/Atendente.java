@@ -1,17 +1,17 @@
 public class Atendente extends Pessoa{
 
-    private int livre; // 1 - livre | 0 - ocupado
+    private int disponivel; // 1 - disponivel | 0 - ocupado
 
     public Atendente(String nome) {
         super(nome);
-        this.livre = 1;
+        this.disponivel = 1;
     }
 
-    public int getLivre() {
-        return livre;
+    public int getDisponivel() {
+        return disponivel;
     }
 
-    public void setLivre(int livre) {
-        this.livre = livre;
+    public void setDisponivel(int disponivel) {
+        this.disponivel = disponivel;
     }
 }
