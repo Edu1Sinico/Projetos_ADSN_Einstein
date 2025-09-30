@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-public class Atendente extends Pessoa{
+
+public class Atendente extends Pessoa {
 
     private int disponivel; // 1 - disponivel | 0 - ocupado
 
@@ -17,16 +15,4 @@ public class Atendente extends Pessoa{
     public void setDisponivel(int disponivel) {
         this.disponivel = disponivel;
     }
-=======
-public class Atendente {
-
->>>>>>> refs/remotes/origin/main
-=======
-public class Atendente {
-
->>>>>>> e1cec852bccf438e86f0cd1d08e140e7312bd43a
-=======
-public class Atendente {
-
->>>>>>> f786ce240ca0fffa6be920eadcf61a4e0b0e380e
 }
