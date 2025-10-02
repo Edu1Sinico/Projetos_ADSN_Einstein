@@ -5,15 +5,15 @@ public class Main {
         Map<String, String> contato = new HashMap<>();
 
         // Cadastrando os elementos
-        contato.put("João","(19)99999-9999");
-        contato.put("Maria","(19)88888-8888");
-        contato.put("Pedro","(10)11111-1111");
-        contato.put("Carlos","(12)22222-2222");
-        contato.put("Eduardo","(19)01010-0101");
+        contato.put("João", "(19)99999-9999");
+        contato.put("Maria", "(19)88888-8888");
+        contato.put("Pedro", "(10)11111-1111");
+        contato.put("Carlos", "(12)22222-2222");
+        contato.put("Eduardo", "(19)01010-0101");
         System.out.println("");
 
         // Exibindo todos os contatos
-        for (Map.Entry<String,String> dados : contato.entrySet()){
+        for (Map.Entry<String, String> dados : contato.entrySet()) {
             System.out.println(dados);
         }
 
@@ -26,7 +26,7 @@ public class Main {
 
         System.out.println("");
         // Exibindo todos os contatos
-        for (Map.Entry<String,String> dados : contato.entrySet()){
+        for (Map.Entry<String, String> dados : contato.entrySet()) {
             System.out.println(dados);
         }
 
