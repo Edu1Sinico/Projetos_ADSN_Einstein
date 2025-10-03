@@ -1,0 +1,201 @@
+/* --------- Página Inicial --------- */
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    width: 100%;
+    height: 22vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+nav {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    padding: 5px;
+    border-radius: 1px;
+}
+
+nav a:hover {
+    background-color: black;
+    color: white;
+}
+
+.main-section {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.banner-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(170, 219, 248);
+}
+
+.info-section {
+    width: 55%;
+    height: 100vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.paragraph-section {
+    width: 100%;
+    padding: 10px;
+}
+
+.paragraph-section p {
+    text-align: justify;
+}
+
+.image-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-section figcaption {
+    padding-left: 40px;
+}
+
+.source-section {
+    width: 100%;
+}
+
+.source-section a {
+    text-decoration: none;
+    color: rgb(65, 185, 255);
+    transition: all 0.2s ease-in-out;
+}
+
+.source-section a:hover {
+    color: rgb(0, 97, 153);
+}
+
+footer {
+    width: 100%;
+    height: 10vh;
+}
+
+footer p {
+    padding: 10px;
+}
+
+/* --------- Contato --------- */
+
+.card-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 42vh;
+}
+
+.card-section .card {
+    width: 220px;
+    padding: 5px;
+    height: 39vh;
+    border: 2px black solid;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+.card-section .card button {
+    margin: 5px;
+    padding: 5px;
+    width: 90px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid black;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.card-section .card button:hover {
+    color: white;
+    background-color: black;
+}
+
+/* --------- Formulário --------- */
+
+.form-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-section form {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    padding: 15px;
+}
+
+.form-section form label {
+    margin-bottom: 5px;
+}
+
+.form-section form .inputText {
+    height: 30px;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.form-section form textarea {
+    resize: none;
+    border: 2px solid black;
+}
+
+.form-btn-section {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-btn-section .inputBtn {
+    margin: 5px;
+    padding: 5px;
+    width: 90px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid black;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-btn-section .inputBtn:hover {
+    color: white;
+    background-color: black;
+}
