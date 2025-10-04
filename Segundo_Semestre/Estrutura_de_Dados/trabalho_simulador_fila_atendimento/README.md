@@ -32,5 +32,16 @@ fluxo de clientes, e pilhas, para armazenar o histórico de atendimentos.
     - Exibe a quantidade de clientes na fila comum;
     - Exibe a quantidade de clientes na fila prioritária.
 
-**ESTRUTURA DE DADOS**
-- 
+**ESTRUTURA DO PROJETOS**
+- Clientes: Representação do cliente da fila, com atributos como nome, prioridade e tipo de atendimento;
+- Atendente: Representação do atendente, como atributos como nome e disponibilidade;
+- FilaEncadeada: Estrutura para gerenciar os clientes na fila que aguardam o atendimento;
+- PilhaEncadeada: Estrutura para gerenciar e armazenar o histórico de atendimentos realizados;
+- SistemaAtendimento: Contém a lógica principal do sistema de atendimento, incluindo:
+    - Adicionar o atendente;
+    - Verificar se o atendente está disponível;
+    - Adicionar cliente para a fila;
+    - Chamar próximo cliente; 
+    - Desfazer atendimento;
+    - Gerar um relatório.
+- Funcoes: Conjunto de métodos auxiliares para validação de dados (ex.: leitura e validação de números inteiros).
