@@ -17,6 +17,7 @@ public class SistemaAtendimento {
         qtdeAtendentes++;
     }
 
+
     // Método para verificar disponibilidade do atendente
     public Atendente atendenteDisponivel() {
         Atendente atendenteLivre = null;
@@ -33,6 +34,7 @@ public class SistemaAtendimento {
         return null;
     }
 
+
     // Método para adicionar um cliente na fila apropriada
     public void adicionarCliente(Cliente cliente) {
         if (cliente.getPrioridade() == 1) {
@@ -42,24 +44,26 @@ public class SistemaAtendimento {
         }
     }
 
+
     // Método para chamar o próximo cliente a partir do atendente que está livre
     public Cliente chamarProximoCliente() {
         Cliente cliente = null;
         Atendente atendenteLivre = atendenteDisponivel();
 
+        // Verifica se possuí atendentes livres
         if (atendenteLivre != null) {
-            // Controla o percurso da fila
+            // Controla o percurso da fila entre comum e prioritária
             if (!filaEncadeadaPrioritaria.isEmpty()) {
                 cliente = filaEncadeadaPrioritaria.dequeue();
             } else if (!filaEncadeadaComum.isEmpty()) {
                 cliente = filaEncadeadaComum.dequeue();
             }
 
-            // Validação de atendimento
+            // Verifica se a fila possuí clientes
             if (cliente != null) {
-                cliente.setAtendente(atendenteLivre.getNome());
-                atendenteLivre.setDisponivel(0);
-                historicoAtendimento.push(cliente);
+                cliente.setAtendente(atendenteLivre.getNome()); // Adiciona o atendente para o cliente
+                atendenteLivre.setDisponivel(0); // Altera a disponibilidade do atendente
+                historicoAtendimento.push(cliente); // Adiciona o cliente no histórico de atendimentos
                 System.out.println("Cliente " + cliente.getNome() + " (" + cliente.getTipoAtendimento() + ") "
                         + "foi atendido por " + atendenteLivre.getNome() + ".");
                 return cliente;
@@ -74,6 +78,7 @@ public class SistemaAtendimento {
         return cliente;
     }
 
+
     // Método para gerar um relatório ( Número total de clientes atendidos e o que ainda estão na fila).
     public String gerarRelatorio() {
         return "Relatório:\n" +
@@ -84,14 +89,16 @@ public class SistemaAtendimento {
                 "∙ Clientes na fila prioritária: " + filaEncadeadaPrioritaria.size();
     }
 
+
     // Método para desfazer o último atendimento
     public void desfazerUltimoAtendimento() {
         if (!historicoAtendimento.isEmpty()) {
-            Cliente cliente = historicoAtendimento.pop();
+            Cliente cliente = historicoAtendimento.pop(); // Remove o histórico de atendimento daquele cliente específico
+            // Verifica qual atendente atendeu aquele determinado cliente
             for (Atendente atendente : atendentes) {
                 if (atendente.getNome().equalsIgnoreCase(cliente.getAtendente())) {
-                    adicionarCliente(cliente);
-                    atendente.setDisponivel(1);
+                    adicionarCliente(cliente); // Retorna o cliente para fila
+                    atendente.setDisponivel(1); // Altera a disponibilidade do atendente
                     qtdeAtendentesOcupados--;
                     break;
                 }
