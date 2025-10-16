@@ -1,0 +1,30 @@
+Material de estudos do Power BI
+
+Sumário:
+∙ Introdução desse Material de Power BI;
+∙ Transformação de Dados Power BI (ETL);
+∙ Medidas do Power BI;
+
+INTRODUÇÃO PARA ESSE MATERIAL:
+
+Esse material utiliza como base o projeto da avaliação formativa, todos os dados apresentados nesse material serão retirados de lá.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+TRANSFORMAÇÃO DE DADOS DO POWER BI (ETL):
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+CRIAÇÃO DE MEDIDAS DO POWER BI:
+
+∙ Cálculos Básicos:
+	- Formas de cálcular total dos valores, exemplo (Total de vendas de veículos):
+
+		Total Vendas = SUM(VendasCarros[ValorVenda])
+
+	Primeiros colocamos o nome da médida, depois atribuimos a soma de todos os valores/colunas de vendas da tabela "VendaCarros".
+
+	- Calcular diferença dos valores, por exemplo (Lucro):
+
+		Lucro = CALCULATE([Total Vendas] - ([Total do Custo de Mão de Obra] + [Total do Custo de Entrega] - [Total de Descontos])
+
+	Utilizamos a função "CALCULATE" para realizar formulas específicas, como nesse exemplo acima, chamamos todas às medidas de "Totais" e realizamos os cálculos.
