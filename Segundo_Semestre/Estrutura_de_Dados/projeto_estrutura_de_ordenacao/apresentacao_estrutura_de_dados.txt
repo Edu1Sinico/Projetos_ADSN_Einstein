@@ -1,0 +1,86 @@
+2ª Avaliação Formativa de Estrutura de Dados: Ordenação. 
+
+Tópicos para o projeto: 
+1º Apresentação Teórica do Método; 
+2º Demonstração da implementação (código); 
+3º Análise de complexidade, Comparação e Uso (desempenho/eficiência).
+
+=========================================================================================================== 
+
+1º Apresentação Teórica do Método:
+
+O Insertion Sort (Ordenação por Inserção) é um algoritmo simples e intuitivo, inspirado na forma como organizamos cartas na mão.
+
+Esse nome foi escolhido porque o princípio do algoritmo é inserir elementos na posição correta dentro de uma parte já ordenada.
+
+A ideia é pegar um elemento por vez e inserir na posição correta dentro da parte do vetor que já está ordenado.
+
+Em outras palavras:
+
+O algoritmo percorre o vetor, separando-o em duas partes: uma parte ordenada (à esquerda) e uma desordenada (à direita).
+A cada passo, ele remove um elemento da parte desordenada e o insere na posição correta na parte ordenada.
+
+Funcionamento (Resumo):
+
+1. Começa do segundo elemento (índice 1).
+2. Compara o elemento atual com os anteriores.
+3. Move os elementos maiores uma posição à frente.
+4. Insere o elemento atual na posição correta.
+5. Repete até o final do vetor.
+
+===========================================================================================================
+
+2º Demonstração da implementação (código):
+
+Estrutura e implementação da estrutura de ordenação "Insertion Sort":
+
+1.  // Variável auxiliar para armazenar o número que será ordenado
+2.  int aux = 0;
+3.  int j = 0;
+4.
+5.  // For para pecorrer todo vetor
+6.  for (int i = 1; i < vetor.length; i++) { // Ele começa na posição 1, pois a posição 0 já está ordenada.
+7.
+8.  aux = vetor[i]; // Recebe o elemento da posição atual
+9.  j = i-1; // O j sempre se manterá uma posição anterior ao elemento da posição atual (i)
+10.
+11. while(j >= 0 && vetor[j] > aux){ // Percorre o vetor e verifica se o valor da posição anterior [j], é maior que o valor da posição atual
+12.
+13. 	vetor[j+1] = vetor[j]; // Caso for positivo, o valor da posição anterior será joga na posição à frente
+14. 	j--; // Decrementar para o j retornar todas às posições do vetor
+15.
+16. }
+17.
+18. vetor[j+1] = aux; // Insere à variável da antiga posição atual, para a posição anterior
+19.
+20. }
+
+Explicação passo a passo:
+
+- Declaração das variáveis:
+	aux guarda temporariamente o número a ser inserido na posição correta, e j controla o índice anterior ao elemento atual.
+- Laço principal (for):
+	Percorre o vetor a partir da posição 1 (pois a posição 0 já está "ordenada").
+- Armazenamento do valor atual:
+	aux = vetor[i] guarda o valor que será comparado e inserido na parte ordenada do vetor.
+- Busca da posição correta (while):
+	Enquanto houver elementos maiores que aux à esquerda, eles são deslocados uma posição à frente.
+- Inserção do valor:
+	Quando o local correto é encontrado, aux é colocado na posição j + 1, mantendo a ordem crescente.
+
+
+===========================================================================================================
+
+3º Análise de complexidade, Comparação e Uso (desempenho/eficiência):
+
+O Insertion Sort realiza comparações e deslocamentos de elementos conforme o grau de desordem do vetor.
+
+Sua eficiência depende de quantos elementos precisam ser movidos a cada inserção.
+
+Melhor Caso (vetor já ordenado) - O(n)
+- Em cada passo, o algoritmo apenas compara o elemento atual com o anterior e percebe que ele já está na posição correta.
+- Não há necessidade de movimentar elementos.
+- O número de comparações é n – 1 (onde n é o tamanho do vetor).
+
+
+
