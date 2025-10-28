@@ -18,8 +18,8 @@ public class Main {
         // Realizando o processo de ordenação por inserção
 
         // Variável auxiliar para armazenar o número que será ordenado
-        int aux = 0;
-        int j = 0;
+        int aux = 0; // Valor atual
+        int j = 0; // Posição anterior ao valor atual
 
         // For para pecorrer todo vetor
         for (int i = 1; i < vetor.length; i++) { // Ele começa na posição 1, pois a posição 0 já está ordenada.
