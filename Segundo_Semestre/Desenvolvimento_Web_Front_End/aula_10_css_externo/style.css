@@ -1,0 +1,91 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #e6f0ff;
+    color: #0a1f44;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: #003366
+}
+
+p{
+    font-size: 16px;
+    line-height: 1.5;
+    color: #0a1f44;
+}
+
+nav a{
+    margin: 0 15px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #0056b3;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+nav a:hover{
+    background-color: #003d80;
+}
+
+button{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* ----- Seletores de Classes ----- */
+
+.produto{
+    display: inline-block;
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 15px;
+    width: 250px;
+}
+
+.destaque{
+    border: 2px solid #004aad;
+    background-color: #d6e8ff;
+}
+
+.banner{
+    background-color: #cce0ff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Seletores de ID */
+
+#topo{
+    background-color: #004aad;
+    color: white;
+    padding: 15px;
+}
+
+#topo img{
+    vertical-align: middle;
+}
+
+#rodape{
+    background-color: #00264d;
+    color: #ffffff;
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+#rodape p,
+#rodape a,
+#rodape span{
+    color: #ffffff
+}
