@@ -99,6 +99,7 @@ table {
     width: 75vh;
 }
 
+
 td {
     border-bottom: solid lightgray 2px;
 }
@@ -126,6 +127,9 @@ figcaption {
     color: gray;
 }
 
-img {
+figure img {
     width: 360px;
+    height: 240px;
+    border-radius: 15px;
+    border: 2px solid #7ad984;
 }
