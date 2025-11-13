@@ -77,6 +77,34 @@ nav .dot {
 main {
     padding-left: 17vw;
     padding-right: 17vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-info-section {
+    padding: 15px;
+}
+
+.text-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 75%;
+}
+
+.source-section {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    font-size: large;
+}
+
+.source-section a {
+    color: #008b8b;
+    text-decoration: none;
+    font-size: large;
 }
 
 p {
@@ -87,6 +115,7 @@ p {
 
 h1 {
     color: #008b8b;
+    font-family: "Changa One", sans-serif;
 }
 
 .title {
@@ -132,4 +161,14 @@ figure img {
     height: 240px;
     border-radius: 15px;
     border: 2px solid #7ad984;
+}
+
+footer {
+    padding: 10px;
+    margin-top: 20px;
+    border-top: 2px solid #449e4d;
+    height: 150px;
+    background-color: #7ad984;
+    color: white;
+    font-family: "Changa One", sans-serif;
 }
