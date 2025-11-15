@@ -4,7 +4,7 @@
  */
 package com.mycompany.aula_bd_java.Controller;
 
-import com.mycompany.aula_bd_java.Connection.ConexaoBD;
+\import com.mycompany.aula_bd_java.Connection.ConexaoBD;
 import com.mycompany.aula_bd_java.Model.TBCursos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
