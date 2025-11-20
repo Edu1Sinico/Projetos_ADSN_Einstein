@@ -4,37 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc151763-31b1-45df-aae5-790464fc00c8" name="Changes" comment="" />
+    <list default="true" id="be1b125a-9bec-40c7-a671-8d04525c7949" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
+  "associatedIndex": 4
 }]]></component>
-  <component name="ProjectId" id="35OfZfyOpba0Vr3QgTx3LuGmT71" />
+  <component name="ProjectId" id="35iVWg1fqU2f5wumqJK0rOTAT6m" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/.Aluno/Documents/Projetos_ADSN_Einstein/Segundo_Semestre/Estrutura_de_Dados/aula_11_recursividade/src/Main.java"
+    "last_opened_file_path": "C:/Users/.Aluno/Documents/Projetos_ADSN_Einstein/Segundo_Semestre/Estrutura_de_Dados/aula_11_recursividade_e_arvore"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bc151763-31b1-45df-aae5-790464fc00c8" name="Changes" comment="" />
-      <created>1762986096904</created>
+      <changelist id="be1b125a-9bec-40c7-a671-8d04525c7949" name="Changes" comment="" />
+      <created>1763592911175</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1762986096904</updated>
+      <updated>1763592911175</updated>
     </task>
     <servers />
   </component>

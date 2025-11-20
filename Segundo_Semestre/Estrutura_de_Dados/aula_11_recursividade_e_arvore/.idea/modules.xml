@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/aula_11_recursividade_e_arvore.iml" filepath="$PROJECT_DIR$/.idea/aula_11_recursividade_e_arvore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex_01_recursividade_e_exemplos/ex_01_recursividade_e_exemplos.iml" filepath="$PROJECT_DIR$/ex_01_recursividade_e_exemplos/ex_01_recursividade_e_exemplos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex_02_arvore_exemplos/ex_02_arvore_exemplos.iml" filepath="$PROJECT_DIR$/ex_02_arvore_exemplos/ex_02_arvore_exemplos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/material_arvore/material_arvore.iml" filepath="$PROJECT_DIR$/material_arvore/material_arvore.iml" />
+    </modules>
+  </component>
+</project>
