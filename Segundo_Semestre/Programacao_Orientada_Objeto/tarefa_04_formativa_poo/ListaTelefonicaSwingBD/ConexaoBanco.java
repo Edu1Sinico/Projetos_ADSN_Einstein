@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author zacha
  */
 public class ConexaoBanco {
-    private static String url = "jdbc:mysql://localhost:3306/aula_db_java";
+    private static String url = "jdbc:mysql://localhost:3306/aula_bd_java";
     private static String usuario = "root";
     private static String senha = "";
 

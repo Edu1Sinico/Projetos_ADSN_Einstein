@@ -6,7 +6,7 @@ public class ListaTelefonica {
     private String email;
     private int id;
 
-    public ListaTelefonica(String nome, String telefone, String email, int id) {
+    public ListaTelefonica(String nome, String telefone, String email) {
         setNome(nome);
         setEmail(email);
         setTelefone(telefone);

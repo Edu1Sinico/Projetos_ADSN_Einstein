@@ -70,8 +70,8 @@ public class DAOListaTelefonica {
     }
 
     public List<ListaTelefonica> listarContatos() {
-        String sql = "SELECT id, nome, telefone FROM lista_telefonica";
-        List<ListaTelefonica> contatos = new ArrayList();
+        String sql = "SELECT id, nome, email, telefone FROM lista_telefonica";
+        List<ListaTelefonica> contatos = new ArrayList<>();
 
         try (Connection conn = ConexaoBanco.conectar(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
 
@@ -79,8 +79,8 @@ public class DAOListaTelefonica {
                 ListaTelefonica lista = new ListaTelefonica();
                 lista.setId(rs.getInt("id"));
                 lista.setNome(rs.getString("nome"));
+                lista.setEmail(rs.getString("email"));
                 lista.setTelefone(rs.getString("telefone"));
-
                 contatos.add(lista);
             }
 
