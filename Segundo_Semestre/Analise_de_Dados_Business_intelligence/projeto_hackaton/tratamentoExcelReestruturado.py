@@ -43,7 +43,7 @@ def preparar_tabela(df, nome_coluna_principal, colunas_remover):
 # ============================================
 # LEITURA DO EXCEL
 # ============================================
-todas_as_planilhas = pd.read_excel("eOuve - Limeira.xlsx", sheet_name=None)
+todas_as_planilhas = pd.read_excel("\eOuve - Limeira.xlsx", sheet_name=None)
 
 secretaria = todas_as_planilhas["Secret_categ"]
 assuntos = todas_as_planilhas["Assuntos_categ"]
@@ -52,9 +52,12 @@ tipo_categoria = todas_as_planilhas["Secret_categ"]
 tipo_status = todas_as_planilhas["Secret_status"]
 categoria_temporaria = todas_as_planilhas["Assuntos_categ"]
 manifesto_sigiloso_temp = todas_as_planilhas["SigilosPorCateg"]
+<<<<<<< HEAD
 status_temporario = todas_as_planilhas["Assuntos_status"]
 categoria_bairro_temp = todas_as_planilhas["Bairro_categ"]
 status_bairro_temp =todas_as_planilhas["Bairro_status"]
+=======
+>>>>>>> b77e5a1f5dcb96aa3539ee6c92571765c75c5b3f
 
 
 # ============================================
@@ -173,6 +176,63 @@ categoria = categoria_long[[
     "ID_Tipo_Categoria",
     "Quantidade"
 ]].sort_values(["ID_Assunto", "ID_Tipo_Categoria"])
+
+
+
+
+
+# ============================================
+# CRIAÇÃO TABELA FATO MANIFESTO SIGILOSO
+# ============================================
+
+manifesto_sigiloso_temp.columns = manifesto_sigiloso_temp.iloc[0]
+manifesto_sigiloso_temp = manifesto_sigiloso_temp[1:]
+manifesto_sigiloso_temp = manifesto_sigiloso_temp.drop(columns=["Secretaria","Total"])
+manifesto_sigiloso_temp = manifesto_sigiloso_temp.drop(index=[1,144])
+
+manifesto_long = manifesto_sigiloso_temp.reset_index().rename(columns={"index": "ID_Assunto"})
+manifesto_long["ID_Assunto"] = manifesto_long["ID_Assunto"] - 1
+
+manifesto_long = manifesto_long.melt(
+    id_vars=["ID_Assunto"],
+    var_name="Nome_Tipo_Categoria",
+    value_name="Quantidade"
+)
+
+manifesto_long = manifesto_long[manifesto_long["Quantidade"] > 0]
+
+# Adicionar ID_Tipo_Categoria
+manifesto_long = manifesto_long.merge(
+    tipo_categoria,
+    on="Nome_Tipo_Categoria",
+    how="left"
+)
+
+# Adicionar ID_Secretaria
+manifesto_long = manifesto_long.merge(
+    assuntos[["ID_Assunto", "ID_Secretaria"]],
+    on="ID_Assunto",
+    how="left"
+)
+
+# Tabela fato final
+manifesto_sigiloso = manifesto_long[[
+    "ID_Assunto",
+    "ID_Secretaria",
+    "ID_Tipo_Categoria",
+    "Quantidade"
+]].sort_values(["ID_Assunto", "ID_Tipo_Categoria"])
+
+
+
+
+
+# ============================================
+# CRIAÇÃO DA TABE LA FATO STATUS
+# ============================================
+
+
+
 
 
 # ============================================
@@ -360,6 +420,7 @@ print(tipo_status)
 print("\nTabela FATO - Categoria:")
 print(categoria)
 
+<<<<<<< HEAD
 print("\nTabela FATO - Manifesto_sigiloso:")
 print(manifesto_sigiloso)
 
@@ -386,3 +447,12 @@ tipo_status.to_sql("Dim_TipoStatus", engine, if_exists="replace", index=False)
 categoria.to_sql("Fato_Categoria", engine, if_exists="replace", index=False)
 manifesto_sigiloso.to_sql("Fato_manifestoSigiloso", engine, if_exists="replace", index=False)
 status.to_sql("Fato_Status", engine, if_exists="replace", index=False)
+=======
+print("\nTabela FATO - Manifesto Sigiloso:")
+print(manifesto_sigiloso)
+
+# ============================================
+# IMPORTAÇÃO DAS TABELAS PARA O SQL SERVER
+# ============================================
+
+>>>>>>> b77e5a1f5dcb96aa3539ee6c92571765c75c5b3f
