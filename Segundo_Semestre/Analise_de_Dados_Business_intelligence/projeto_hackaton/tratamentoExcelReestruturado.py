@@ -2,7 +2,7 @@
 # IMPORTAÇÕES
 # ============================================
 import pandas as pd
-
+from sqlalchemy import create_engine
 
 # ============================================
 # CONFIGURAÇÕES OPCIONAIS DE VISUALIZAÇÃO
@@ -11,7 +11,6 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 pd.set_option('display.max_colwidth', None)
-
 
 # ============================================
 # FUNÇÕES AUXILIARES
@@ -52,12 +51,15 @@ bairro = todas_as_planilhas["Bairro_categ"]
 tipo_categoria = todas_as_planilhas["Secret_categ"]
 tipo_status = todas_as_planilhas["Secret_status"]
 categoria_temporaria = todas_as_planilhas["Assuntos_categ"]
+manifesto_sigiloso_temp = todas_as_planilhas["SigilosPorCateg"]
+status_temporario = todas_as_planilhas["Assuntos_status"]
+categoria_bairro_temp = todas_as_planilhas["Bairro_categ"]
+status_bairro_temp =todas_as_planilhas["Bairro_status"]
 
 
 # ============================================
 # TRATAMENTO DAS DIMENSÕES PRINCIPAIS
 # ============================================
-
 secretaria = preparar_tabela(
     secretaria,
     nome_coluna_principal="Secretaria",
@@ -83,8 +85,8 @@ bairro = preparar_tabela(
 # ============================================
 # REMOVER ÚLTIMAS LINHAS LIXO
 # ============================================
-secretaria = secretaria.drop(index=[18])
-assuntos = assuntos.drop(index=[144])
+secretaria = secretaria.drop(index=[1, 18])
+assuntos = assuntos.drop(index=[1, 144])
 bairro = bairro.drop(index=[270])
 
 
@@ -93,10 +95,12 @@ bairro = bairro.drop(index=[270])
 # ============================================
 tipo_categoria.columns = tipo_categoria.iloc[0]
 tipo_categoria = tipo_categoria[1:]
+tipo_categoria = tipo_categoria.drop(columns=["Secretaria", "Total"])
 tipo_categoria = pd.DataFrame({"Nome_Tipo_Categoria": tipo_categoria.columns})
 
 tipo_status.columns = tipo_status.iloc[0]
 tipo_status = tipo_status[1:]
+tipo_status = tipo_status.drop(columns=["Secretaria", "Total"])
 tipo_status = pd.DataFrame({"Nome_Tipo_Status": tipo_status.columns})
 
 
@@ -134,11 +138,11 @@ assuntos = assuntos.drop(columns=["Nome_Secretaria"])
 categoria_temporaria.columns = categoria_temporaria.iloc[0]
 categoria_temporaria = categoria_temporaria[1:]
 categoria_temporaria = categoria_temporaria.drop(columns=["Assunto","Total"])
-categoria_temporaria = categoria_temporaria.drop(index=[144])
+categoria_temporaria = categoria_temporaria.drop(index=[1,144])
 
 # Formato longo
 categoria_long = categoria_temporaria.reset_index().rename(columns={"index": "ID_Assunto"})
-categoria_long["ID_Assunto"] = categoria_long["ID_Assunto"] + 1
+categoria_long["ID_Assunto"] = categoria_long["ID_Assunto"] - 1
 
 categoria_long = categoria_long.melt(
     id_vars=["ID_Assunto"],
@@ -172,6 +176,170 @@ categoria = categoria_long[[
 
 
 # ============================================
+# CRIAÇÃO DA TABELA FATO CATEGORIA BAIRRO
+# ============================================
+
+# Ajustar categoria bairro temporária
+categoria_bairro_temp.columns = categoria_bairro_temp.iloc[0]
+categoria_bairro_temp = categoria_bairro_temp[1:]
+categoria_bairro_temp = categoria_bairro_temp.drop(columns=["Bairro","Total"])
+categoria_bairro_temp = categoria_bairro_temp.drop(index=[270])
+
+# Formato longo
+categoria_bairro_long = categoria_bairro_temp.reset_index().rename(columns={"index": "ID_Bairro"})
+categoria_bairro_long["ID_Bairro"] = categoria_bairro_long["ID_Bairro"]
+
+categoria_bairro_long = categoria_bairro_long.melt(
+    id_vars=["ID_Bairro"],
+    var_name="Nome_Tipo_Categoria",
+    value_name="Quantidade"
+)
+
+categoria_bairro_long = categoria_bairro_long[categoria_bairro_long["Quantidade"] > 0]
+
+# Adicionar ID_Tipo_Categoria
+categoria_bairro_long = categoria_bairro_long.merge(
+    tipo_categoria,
+    on="Nome_Tipo_Categoria",
+    how="left"
+)
+
+# Tabela fato final
+categoria_bairro = categoria_bairro_long[[
+    "ID_Bairro",
+    "ID_Tipo_Categoria",
+    "Quantidade"
+]].sort_values(["ID_Bairro", "ID_Tipo_Categoria"])
+
+
+# ============================================
+# CRIAÇÃO TABELA FATO MANIFESTO SIGILOSO
+# ============================================
+
+# Ajustar manifesto sigiloso temporário
+manifesto_sigiloso_temp.columns = manifesto_sigiloso_temp.iloc[0]
+manifesto_sigiloso_temp = manifesto_sigiloso_temp[1:]
+manifesto_sigiloso_temp = manifesto_sigiloso_temp.drop(columns=["Secretaria","Total"])
+manifesto_sigiloso_temp = manifesto_sigiloso_temp.drop(index=[1,144])
+
+# Formato longo
+manifesto_long = manifesto_sigiloso_temp.reset_index().rename(columns={"index": "ID_Assunto"})
+manifesto_long["ID_Assunto"] = manifesto_long["ID_Assunto"] - 1
+
+manifesto_long = manifesto_long.melt(
+    id_vars=["ID_Assunto"],
+    var_name="Nome_Tipo_Categoria",
+    value_name="Quantidade"
+)
+
+manifesto_long = manifesto_long[manifesto_long["Quantidade"] > 0]
+
+# Adicionar ID_Tipo_Categoria
+manifesto_long = manifesto_long.merge(
+    tipo_categoria,
+    on="Nome_Tipo_Categoria",
+    how="left"
+)
+
+# Adicionar ID_Secretaria
+manifesto_long = manifesto_long.merge(
+    assuntos[["ID_Assunto", "ID_Secretaria"]],
+    on="ID_Assunto",
+    how="left"
+)
+
+# Tabela fato final
+manifesto_sigiloso = manifesto_long[[
+    "ID_Assunto",
+    "ID_Secretaria",
+    "ID_Tipo_Categoria",
+    "Quantidade"
+]].sort_values(["ID_Assunto", "ID_Tipo_Categoria"])
+
+
+# ============================================
+# CRIAÇÃO DA TABELA FATO STATUS
+# ============================================
+
+# Ajustar status temporário
+status_temporario.columns = status_temporario.iloc[0]
+status_temporario = status_temporario[1:]
+status_temporario = status_temporario.drop(columns=["Assunto","Total"])
+status_temporario = status_temporario.drop(index=[1,144])
+
+# Formato longo
+status_long = status_temporario.reset_index().rename(columns={"index": "ID_Assunto"})
+status_long["ID_Assunto"] = status_long["ID_Assunto"] + 1
+
+status_long = status_long.melt(
+    id_vars=["ID_Assunto"],
+    var_name="Nome_Tipo_Status",
+    value_name="Quantidade"
+)
+
+status_long = status_long[status_long["Quantidade"] > 0]
+
+# Adicionar ID_Tipo_Status
+status_long = status_long.merge(
+    tipo_status,
+    on="Nome_Tipo_Status",
+    how="left"
+)
+
+# Adicionar ID_Secretaria
+status_long = status_long.merge(
+    assuntos[["ID_Assunto", "ID_Secretaria"]],
+    on="ID_Assunto",
+    how="left"
+)
+
+# Tabela fato final
+status = status_long[[
+    "ID_Assunto",
+    "ID_Secretaria",
+    "ID_Tipo_Status",
+    "Quantidade"
+]].sort_values(["ID_Assunto", "ID_Tipo_Status"])
+
+
+# ============================================
+# CRIAÇÃO DA TABELA FATO STATUS BAIRRO
+# ============================================
+
+# Ajustar status bairro temporária
+status_bairro_temp.columns = status_bairro_temp.iloc[0]
+status_bairro_temp = status_bairro_temp[1:]
+status_bairro_temp = status_bairro_temp.drop(columns=["Bairro","Total"])
+status_bairro_temp = status_bairro_temp.drop(index=[270])
+
+# Formato longo
+status_bairro_long = status_bairro_temp.reset_index().rename(columns={"index": "ID_Bairro"})
+status_bairro_long["ID_Bairro"] = status_bairro_long["ID_Bairro"]
+
+status_bairro_long = status_bairro_long.melt(
+    id_vars=["ID_Bairro"],
+    var_name="Nome_Tipo_Status",
+    value_name="Quantidade"
+)
+
+status_bairro_long = status_bairro_long[status_bairro_long["Quantidade"] > 0]
+
+# Adicionar ID_Tipo_Status
+status_bairro_long = status_bairro_long.merge(
+    tipo_status,
+    on="Nome_Tipo_Status",
+    how="left"
+)
+
+# Tabela fato final
+status_bairro = status_bairro_long[[
+    "ID_Bairro",
+    "ID_Tipo_Status",
+    "Quantidade"
+]].sort_values(["ID_Bairro", "ID_Tipo_Status"])
+
+
+# ============================================
 # EXIBIR RESULTADOS
 # ============================================
 print("\nTabela Secretaria:")
@@ -191,3 +359,30 @@ print(tipo_status)
 
 print("\nTabela FATO - Categoria:")
 print(categoria)
+
+print("\nTabela FATO - Manifesto_sigiloso:")
+print(manifesto_sigiloso)
+
+print("\nTabela FATO - Categoria Bairro:")
+print(categoria_bairro)
+
+print("\nTabela FATO - Status Bairro:")
+print(status_bairro)
+
+# ============================================
+# CONEXÃO COM O BANCO DE DADOS SQL SERVER
+# ============================================
+engine = create_engine(
+    "mssql+pyodbc://PCBASS/HACKATON?driver=ODBC+Driver+17+for+SQL+Server"
+)
+
+# # ============================================
+# # EXTRAÇÃO DAS TABELAS EM PYTHON PARA O SQL SERVER
+# # ============================================
+secretaria.to_sql("Dim_Secretaria", engine, if_exists="replace", index=False)
+assuntos.to_sql("Dim_Assuntos", engine, if_exists="replace", index=False)
+tipo_categoria.to_sql("Dim_TipoCategoria", engine, if_exists="replace", index=False)
+tipo_status.to_sql("Dim_TipoStatus", engine, if_exists="replace", index=False)
+categoria.to_sql("Fato_Categoria", engine, if_exists="replace", index=False)
+manifesto_sigiloso.to_sql("Fato_manifestoSigiloso", engine, if_exists="replace", index=False)
+status.to_sql("Fato_Status", engine, if_exists="replace", index=False)
