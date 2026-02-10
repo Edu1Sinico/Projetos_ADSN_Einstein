@@ -8,7 +8,7 @@ fun main() {
     // -------------------------------------------------------------------------------
 
     // Declarando variáveis
-    var x:String
+    var x: String
     var mensagem = "Primeiro aula de Kotlin!"
 
     println(mensagem)
@@ -26,12 +26,12 @@ fun main() {
 
     // Exemplo + IF + Leitura de Dados
 
-    val media=readln()
-    val situacao:String
+    val media = readln()
+    val situacao: String
 
     situacao = if (media.toFloat() < 4) "Reprovado"
-        else if (media.toFloat() < 6) "Exame"
-        else "Aprovado"
+    else if (media.toFloat() < 6) "Exame"
+    else "Aprovado"
 
     println("Situação: " + situacao)
 
@@ -67,4 +67,32 @@ fun main() {
     println("Multiplicação: " + mult)
     println("Divisão: " + div)
 
+    /* 3 - Escreva um programa que converta um valor de reais (R$) em dólar (US$).
+    Ele deve solicitar o valor em reais e a cotação do dólar */
+
+    println("\nInforme o valor em reais para conversão: ")
+    val valor = readln().toInt();
+
+    var dolar = valor * 5.20
+
+    println("Valor convertido para dolár: " + dolar)
+
+    /* 4 - Faça um programa que receba as notas de P1, P2, AI1 e AI2 e calcule a media final do aluno.
+    Lembrando que as notas de P1 e de P2 devem ser digitadas com valores entre 0 e 9,
+    as notas de AI1 e AI2 com valores entre 0 e 1 todas com apenas uma casa decimal.
+    Ao final ele deve exibir a média e escrever se o aluno foi aprovado ou reprovado,
+    para aprovação precisa de média maior ou igual a 6,0 */
+
+    println("\nInforme a P1: ")
+    val varP1 = readln().toFloat();
+    println("\nInforme a P2: ")
+    val varP2 = readln().toFloat();
+    println("\nInforme a AI1: ")
+    val varAI1 = readln().toFloat();
+    println("\nInforme a AI2: ")
+    val varAI2 = readln().toFloat();
+
+    val mediaFinal = (varP1 + varP2 + varAI1 + varAI2)
+
+    println("Média final: ")
 }
