@@ -1,0 +1,40 @@
+Tutorial de Instalação e Criação de Projetos do .NET Core 8
+
+1 - Baixar .NET Core 8
+2 - Baixar Visual Studio Code (VS Code)
+  2.1 - Extensão do C#
+  2.2 - .NET install tool
+  2.3 - C# Dev Kit (opcional)
+3 - Criação de Projeto
+
+-----------------------------------------------------------------------------------
+1. Baixar o SDK .NET Core 8
+
+Link: https://dotnet.microsoft.com/pt-br/download/dotnet
+
+Instalar o SDK da versão do .NET Core 8
+
+-----------------------------------------------------------------------------------
+2. Baixar o Visual Studio Code
+
+Link: https://code.visualstudio.com/
+
+Instalar a extensão do C#:
+	Extensions -> Pesquisar por "C#" e depois ".NET" -> Instalar os seguintes complementos:
+		- C#
+		- C# Dev Kit (opcional)
+		- .NET Install Tool
+
+-----------------------------------------------------------------------------------
+3. Criação de Tipos de Projeto
+
+Digitar no terminal o seguinte comando:
+	"dotnet new console -n projeto-kotlin-01"
+
+Explicação: 
+   - Por padrão, informamos o comando "dotnet new" serve para nós criarmos o projeto. Se digitarmos somente esse mesmo comando sem incluir "console" em diante, ele apresentará uma lista de todos os tipos de projetos.
+   - O "console" é o tipo de projeto que nós iremos trabalhar.
+   - Por fim, nomeamos nosso projeto com "-n".
+
+-----------------------------------------------------------------------------------
+
