@@ -23,13 +23,15 @@ Instalar a extensão do C#:
 	Extensions -> Pesquisar por "C#" e depois ".NET" -> Instalar os seguintes complementos:
 		- C#
 		- C# Dev Kit (opcional)
+		- C# Extension
+		- C# Snippets
 		- .NET Install Tool
 
 -----------------------------------------------------------------------------------
 3. Criação de Tipos de Projeto
 
 Digitar no terminal o seguinte comando:
-	"dotnet new console -n projeto-kotlin-01"
+	"dotnet new console -n projeto-dotnet-01"
 
 Explicação: 
    - Por padrão, informamos o comando "dotnet new" serve para nós criarmos o projeto. Se digitarmos somente esse mesmo comando sem incluir "console" em diante, ele apresentará uma lista de todos os tipos de projetos.

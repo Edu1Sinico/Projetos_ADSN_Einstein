@@ -1,0 +1,15 @@
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\bin\Debug\net8.0\fundamentos-dotnet-01.exe
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\bin\Debug\net8.0\fundamentos-dotnet-01.deps.json
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\bin\Debug\net8.0\fundamentos-dotnet-01.runtimeconfig.json
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\bin\Debug\net8.0\fundamentos-dotnet-01.dll
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\bin\Debug\net8.0\fundamentos-dotnet-01.pdb
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\obj\Debug\net8.0\fundamentos-dotnet-01.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\obj\Debug\net8.0\fundamentos-dotnet-01.AssemblyInfoInputs.cache
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\obj\Debug\net8.0\fundamentos-dotnet-01.AssemblyInfo.cs
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\obj\Debug\net8.0\fundamentos-dotnet-01.csproj.CoreCompileInputs.cache
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\obj\Debug\net8.0\fundamentos-dotnet-01.sourcelink.json
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\obj\Debug\net8.0\fundamentos-dotnet-01.dll
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\obj\Debug\net8.0\refint\fundamentos-dotnet-01.dll
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\obj\Debug\net8.0\fundamentos-dotnet-01.pdb
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\obj\Debug\net8.0\fundamentos-dotnet-01.genruntimeconfig.cache
+c:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\2_fundamentos_csharp\fundamentos-dotnet-01\obj\Debug\net8.0\ref\fundamentos-dotnet-01.dll
