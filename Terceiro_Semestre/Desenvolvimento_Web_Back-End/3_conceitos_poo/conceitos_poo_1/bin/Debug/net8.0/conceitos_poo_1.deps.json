@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "conceitos_poo_1/1.0.0": {
+        "runtime": {
+          "conceitos_poo_1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "conceitos_poo_1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

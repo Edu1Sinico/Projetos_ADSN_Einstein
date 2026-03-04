@@ -1,0 +1,15 @@
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\bin\Debug\net8.0\conceitos_poo_1.exe
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\bin\Debug\net8.0\conceitos_poo_1.deps.json
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\bin\Debug\net8.0\conceitos_poo_1.runtimeconfig.json
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\bin\Debug\net8.0\conceitos_poo_1.dll
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\bin\Debug\net8.0\conceitos_poo_1.pdb
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\obj\Debug\net8.0\conceitos_poo_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\obj\Debug\net8.0\conceitos_poo_1.AssemblyInfoInputs.cache
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\obj\Debug\net8.0\conceitos_poo_1.AssemblyInfo.cs
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\obj\Debug\net8.0\conceitos_poo_1.csproj.CoreCompileInputs.cache
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\obj\Debug\net8.0\conceitos_poo_1.sourcelink.json
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\obj\Debug\net8.0\conceitos_poo_1.dll
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\obj\Debug\net8.0\refint\conceitos_poo_1.dll
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\obj\Debug\net8.0\conceitos_poo_1.pdb
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\obj\Debug\net8.0\conceitos_poo_1.genruntimeconfig.cache
+C:\Users\Aluno\Documents\Projetos_ADSN_Einstein\Terceiro_Semestre\Desenvolvimento_Web_Back-End\3_conceitos_poo\conceitos_poo_1\obj\Debug\net8.0\ref\conceitos_poo_1.dll
