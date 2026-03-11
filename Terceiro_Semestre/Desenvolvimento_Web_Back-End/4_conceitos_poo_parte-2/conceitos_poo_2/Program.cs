@@ -22,3 +22,9 @@ quadrado.CalcularPerimetro();
 
 // Interfaces
 
+INotificador notificadorEmail = new EmailNotificador();
+
+if(notificadorEmail.ValidarDestinatario("geovani@email.com"))
+{
+    notificadorEmail.EnviarNotificacao("Olá");
+}
