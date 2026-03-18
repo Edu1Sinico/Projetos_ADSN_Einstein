@@ -1,0 +1,15 @@
+Criação de projetos .NET Core Web
+
+-----------------------------------------------------------------------------------
+Criação de Tipos de Projeto (webapi)
+
+1. Digitar no terminal o seguinte comando:
+	"dotnet new webapi -n introducao_dotnet_api"
+
+2. Compilação do sistema:
+	"dotnet build"
+
+3. Executar o projeto:
+	"dotnet run"
+
+-----------------------------------------------------------------------------------

@@ -10,8 +10,6 @@ namespace conceitos_poo_2
         public virtual void EmitirSom()
         {
             Console.WriteLine("Som genérico de um animal");
-        }
-
-        
+        }        
     }
 }
