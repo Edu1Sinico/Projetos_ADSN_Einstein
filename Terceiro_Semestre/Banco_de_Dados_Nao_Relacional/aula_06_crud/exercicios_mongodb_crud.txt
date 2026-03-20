@@ -1,0 +1,22 @@
+Eduardo Silva Sinico - 0444/25-1 - Exercícios MongoDB CRUD - 19/03/2026
+
+1.
+use veiculos
+
+2.
+db.veiculos.insertMany([{ "tipo": "carro", "marca": "Toyota", "modelo": "Corolla", "ano": 2022, "cor": "Preto", "preco": 120000, "disponivel": true },{ "tipo": "carro", "marca": "Honda", "modelo": "Civic", "ano": 2021, "cor": "Branco", "preco": 110000, "disponivel": true },{ "tipo": "carro", "marca": "Ford", "modelo": "Fusion", "ano": 2018, "cor": "Prata", "preco": 90000, "disponivel": true },{ "tipo": "moto", "marca": "Yamaha", "modelo": "MT-07", "ano": 2023, "cor": "Azul", "preco": 55000, "disponivel": true },{ "tipo": "moto", "marca": "Honda", "modelo": "CB 500X", "ano": 2022, "cor": "Vermelho", "preco": 42000, "disponivel": true },{ "tipo": "moto", "marca": "Kawasaki", "modelo": "Ninja 400", "ano": 2021, "cor": "Verde", "preco": 39000, "disponivel": true },{ "tipo": "caminhao", "marca": "Volvo", "modelo": "FH 540", "ano": 2020, "cor": "Branco", "preco": 480000, "disponivel": true },{ "tipo": "caminhao", "marca": "Mercedes-Benz", "modelo": "Actros", "ano": 2019, "cor": "Cinza", "preco": 450000, "disponivel": true },{ "tipo": "caminhao", "marca": "Scania", "modelo": "R 450", "ano": 2023, "cor": "Azul", "preco": 500000, "disponivel": true }]);
+
+3.
+db.veiculos.find()
+
+4.
+db.veiculos.updateOne({marca:Honda},{$set:{"disponivel":false}})
+
+5.
+db.veiculos.updateMany({marca:"Honda"},{$set:{"garantia":"3 anos"}})
+
+6.
+db.veiculos.deleteOne({marca:"Scania"})
+
+7.
+db.veiculos.deleteMany({ano:{$lt:2020})
