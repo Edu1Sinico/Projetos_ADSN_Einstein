@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Aluno\\.nuget\\packages\\": {}
+    "C:\\Users\\sinic\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aluno\\Documents\\Projetos_ADSN_Einstein\\Terceiro_Semestre\\Desenvolvimento_Web_Back-End\\1_introducao_dotnet\\projeto-dotnet-01\\projeto-dotnet-01.csproj",
+      "projectUniqueName": "C:\\Users\\sinic\\OneDrive\\Desktop\\Códigos e Projetos\\Projetos_ADS_Einstein\\Terceiro_Semestre\\Desenvolvimento_Web_Back-End\\1_introducao_dotnet\\projeto-dotnet-01\\projeto-dotnet-01.csproj",
       "projectName": "projeto-dotnet-01",
-      "projectPath": "C:\\Users\\Aluno\\Documents\\Projetos_ADSN_Einstein\\Terceiro_Semestre\\Desenvolvimento_Web_Back-End\\1_introducao_dotnet\\projeto-dotnet-01\\projeto-dotnet-01.csproj",
-      "packagesPath": "C:\\Users\\Aluno\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Aluno\\Documents\\Projetos_ADSN_Einstein\\Terceiro_Semestre\\Desenvolvimento_Web_Back-End\\1_introducao_dotnet\\projeto-dotnet-01\\obj\\",
+      "projectPath": "C:\\Users\\sinic\\OneDrive\\Desktop\\Códigos e Projetos\\Projetos_ADS_Einstein\\Terceiro_Semestre\\Desenvolvimento_Web_Back-End\\1_introducao_dotnet\\projeto-dotnet-01\\projeto-dotnet-01.csproj",
+      "packagesPath": "C:\\Users\\sinic\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sinic\\OneDrive\\Desktop\\Códigos e Projetos\\Projetos_ADS_Einstein\\Terceiro_Semestre\\Desenvolvimento_Web_Back-End\\1_introducao_dotnet\\projeto-dotnet-01\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Aluno\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\sinic\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.418/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.419/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

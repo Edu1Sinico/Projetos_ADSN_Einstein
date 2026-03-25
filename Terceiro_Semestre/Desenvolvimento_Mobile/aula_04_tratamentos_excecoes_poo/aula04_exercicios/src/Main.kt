@@ -59,17 +59,17 @@ class Pessoas {
         var result : Double = (p/(a*a))
 
         if(result < 18.5)
-            return "abaixo do peso ideial"
+            return "${String.format("%.2f",result)} - abaixo do peso ideial"
         else if (result >= 18.5 && result <= 24.9)
-            return "peso normal"
+            return "${String.format("%.2f", result)} -  peso normal"
         else if (result >= 25 && result <= 29.9)
-            return "acima do peso"
+            return "${String.format("%.2f", result)} -  acima do peso"
         else if (result >= 30 && result <= 34.9)
-            return "obesidade grau I"
+            return "${String.format("%.2f", result)} -  obesidade grau I"
         else if (result >= 35 && result <= 39.9)
-            return "obesidade grau II"
+            return "${String.format("%.2f", result)} -  obesidade grau II"
         else
-            return "obesidade grau III"
+            return "${String.format("%.2f", result)} -  obesidade grau III"
     }
 
     fun cadPessoa () {
@@ -91,6 +91,7 @@ class Pessoas {
         println("Peso: ${getPeso()}")
         println("Altura: ${getAltura()}")
         println("Cálculo IMC: ${calcIMC(getPeso(),getAltura())}")
-
     }
+
+
 }
