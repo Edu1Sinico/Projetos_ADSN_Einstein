@@ -1,0 +1,12 @@
+30/03/2026 - Introdução Mobile: Android Studio
+
+Tag TextView: Cria uma label para a página.
+
+<TextView
+        android:layout_width="0dp" // Define a largura do elemento (wrap_content: ajusta automaticamente, match_parents: preenche completamente conforme o tamanho do elemento pai, 10dp é o tamanho definido manualmente)
+        android:layout_height="30dp" // Define a altura do elemento
+        android:layout_weight="1" // Divide os elementos na tela de forma iguais (tanto vertical, quanto horizontal)
+	android:background="@color/yellow" // Define a cor do elemento (podemos colocar diretamente o hexadecimal da cor)
+        android:text="Boa Noite!"
+        android:gravity="center" // Define a posição do elemento
+        android:textsize="30sp" />
