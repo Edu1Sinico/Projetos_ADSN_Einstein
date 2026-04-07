@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\EinsteinGestaoAcademica.API.props" />
+</Project>

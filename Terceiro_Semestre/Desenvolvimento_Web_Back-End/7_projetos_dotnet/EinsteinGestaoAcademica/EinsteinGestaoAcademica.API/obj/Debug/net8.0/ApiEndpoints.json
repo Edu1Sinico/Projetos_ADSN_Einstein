@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "EinsteinGestaoAcademica.API.Controllers.HomeController",
+    "Method": "HelloWorld",
+    "RelativePath": "api/Home/hello",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
