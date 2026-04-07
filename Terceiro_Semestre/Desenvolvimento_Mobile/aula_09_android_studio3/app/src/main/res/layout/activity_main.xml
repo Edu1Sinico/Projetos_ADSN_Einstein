@@ -5,18 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/text_texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/coming_soon"
-        android:textSize="30sp"
-        android:text="Hello World!" />
+
 
     <EditText
-        android:
+        android:id="@+id/edit_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alata"
+        android:text="Digite o nome"
+        android:textSize="20sp"
+        android:layout_margin="5sp"
+        />
+
+    <EditText
+        android:id="@+id/edit_fone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alata"
+        android:text="Digite o Telefone"
+        android:textSize="20sp"
+        android:layout_margin="5sp"
         />
 
 </LinearLayout>

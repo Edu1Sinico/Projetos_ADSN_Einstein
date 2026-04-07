@@ -1,4 +1,4 @@
-package com.example.aula_09_android_studio3
+package com.tadseinstein.aula09androidstudio3
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

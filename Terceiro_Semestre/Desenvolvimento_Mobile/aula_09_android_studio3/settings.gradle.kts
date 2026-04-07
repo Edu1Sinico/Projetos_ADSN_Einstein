@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "aula_09_android_studio3"
+rootProject.name = "aula09AndroidStudio3"
 include(":app")

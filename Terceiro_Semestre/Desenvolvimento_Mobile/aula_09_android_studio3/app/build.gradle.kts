@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.aula_09_android_studio3"
-    compileSdkPreview = "37.0"
+    namespace = "com.tadseinstein.aula09androidstudio3"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.aula_09_android_studio3"
-        minSdkPreview = "37.0"
-        targetSdkPreview = "37.0"
+        applicationId = "com.tadseinstein.aula09androidstudio3"
+        minSdk = 29
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
