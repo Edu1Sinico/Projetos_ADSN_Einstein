@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="15dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:src="@drawable/outline_gas_meter_64"
+        android:layout_gravity="center_horizontal"
+        app:hint="@color/orange"
+        android:layout_height="128dp"
+        android:layout_width="128dp"
+        android:layout_margin="15sp"
+        />
+
+    <!-- Distancia -->
+    <EditText
+        android:id="@+id/edit_distancia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15sp"
+        android:layout_marginLeft="15sp"
+        android:hint="Distância percorrida"
+        android:textSize="18.5sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total de quilometros"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <!-- Preço -->
+    <EditText
+        android:id="@+id/edit_preco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15sp"
+        android:layout_marginLeft="15sp"
+        android:layout_marginTop="5sp"
+        android:hint="Preço"
+        android:textSize="18.5sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preço por litro"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <!-- Autonomia -->
+    <EditText
+        android:id="@+id/edit_autonomia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15sp"
+        android:layout_marginLeft="15sp"
+        android:layout_marginTop="5sp"
+        android:hint="Autonomia"
+        android:textSize="18.5sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20sp"
+        android:text="Kilometros por litro"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- Resultado -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="GASTO TOTAL SERÁ DE: "
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_margin="15sp"
+        />
+
+    <TextView
+        android:id="@+id/label_resultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="R$ 0,00 "
+        android:textStyle="bold"
+        android:textSize="20sp"
+        />
+
+    <!-- Botão de Gravar -->
+    <Button
+        android:id="@+id/button_grava"
+        android:layout_width="1.2in"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20sp"
+        android:text="Gravar"
+        android:textSize="18sp"
+        />
+
+</LinearLayout>
