@@ -22,6 +22,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
     }
 
     override fun onClick(view: View) {
+        var valor_litro = binding.editPreco.text.toString().toDouble()
+        var distancia = binding.editDistancia.text.toString().toDouble()
+        var autonomia = binding.editAutonomia.text.toString().toDouble()
+        calcCombustivel(valor_litro, distancia, autonomia)
+    }
 
+    fun calcCombustivel(valor_litro: Double, distancia: Double, autonomia: Double) {
+
+        var gasto_total = 0.0
+
+        gasto_total = (distancia/autonomia)*valor_litro
+
+        binding.textResultado.text="R$ ${gasto_total}"
     }
 }
