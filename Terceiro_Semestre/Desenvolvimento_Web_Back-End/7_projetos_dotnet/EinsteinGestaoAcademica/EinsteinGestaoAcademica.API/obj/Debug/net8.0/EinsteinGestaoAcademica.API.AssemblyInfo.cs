@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EinsteinGestaoAcademica.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d32b0e924e58a9dcde1835c3f7a6388345033d17")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+938a402887796b97b0163f919c58c43aa04df409")]
 [assembly: System.Reflection.AssemblyProductAttribute("EinsteinGestaoAcademica.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EinsteinGestaoAcademica.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
