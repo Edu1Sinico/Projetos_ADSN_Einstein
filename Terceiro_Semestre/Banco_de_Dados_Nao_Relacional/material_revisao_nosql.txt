@@ -1,0 +1,50 @@
+Material de Revisão de Banco de Dados Não-Relacional
+
+introdução Mongo DB:
+
+1. Abrir o terminal do Windows;
+
+2. Acessar via terminal a pasta onde o MongoDB foi instalado:
+
+	cd C:\Program Files\MongoDB\Server\(versão)\bin
+
+3. Carregar o servidor do MongoDB (Digitar Mongod):
+
+	C:\Program Files\MongoDB\Server\(versão)\bin> mongod
+
+4. Instalar o Mongo Shell (mongosh) precisa ser instalado para manutenção do banco de dados:
+
+	C:\Program Files\MongoDB\Server\(versão)\bin> mongosh
+
+5. Comandos rápidos para consulta de banco:
+
+	- Comando para exibir todos os bancos: show dbs
+	- Comando para exibir db atual: db
+	- Comando para utilizar/criar um banco: use (nome do banco)
+
+6. Criando a primeira coleção "collection" com MongoDB:
+
+	db.nome_da_collection.insertOne({"campo1":valo,"campo2":valor})
+
+	exemplo:
+
+	db.pessoas.insertOne({"nome":"Jose da Silva","idade":25,"telefone":"99545-5454"})
+
+7. Comando para listar todas as collections:
+
+	show collections
+
+8. Comando para listar itens cadastrados nas collections:
+
+	db.pessoas.find()
+
+9. Podemos alterar o valor do campo "_id" de nossa collection:
+
+	db.pessoas.insertOne({"_id": 5,"nome": "Tania Souza", "idade":  22, "telefone": "99321-1234"})
+
+10. Para incluirmos diversos cadastros em nossa coleção, podemos utilizar o seguinte comando:
+
+	db.pessoas.InsertMany([{"_id": 6,"nome": "Renato Alves", "idade":  29, "telefone": "98555-1234"},{"_id": 7,"nome": "Andressa  Oliveira", "idade":  23, "telefone": "98989-0909"}])
+
+===========================================================================================
+
