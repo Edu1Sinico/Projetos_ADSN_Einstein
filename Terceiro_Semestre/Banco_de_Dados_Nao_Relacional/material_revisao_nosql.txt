@@ -255,6 +255,37 @@ Aula 3: Consultas com o Find:
 
 Aula 4: Métodos CRUD em NoSQL
 
-1. Create já foi visto anteriormente (insertOne e insertMany)
+1. Create já foi visto anteriormente (insertOne e insertMany) e também o find (find e findOne)
 
-2. 
+2. Função de update ({filtro}, {$set {campos}}):
+	
+   Atualizar um campo (updateOne):
+	- Por _ID: db.pessoas.updateOne({_id:10},{$set: {"telefone":"99954-5544"}})
+	- Por campos: db.pessoas.updateOne({idade:23},{$set:{"cidade":"Limeira"}})
+
+   Atualizar diversos campos (updateMany):
+	- Por campos: db.pessoas.updateMany({idade:23},{$set:{"cidade":"Piracicaba"}})
+
+Obs.: É possível alterar mais de um atributo ao mesmo tempo (separando por vírgula):
+	- Por campos: db.pessoas.updateMany({idade:23},{$set:{"cidade":"Americana","estado": "SP"}})
+
+3. Função de replace (substituição), ela substitui todo conteúdo da collection pela nova informação: 
+
+   Substituir um campo (replaceOne):
+	db.pessoas.replaceOne({_id:11},{"nome":"Alteramos tudo"})
+
+   Substituir diversos campos (replaceMany):
+	db.pessoas.updateMany({idade:23},{"nome":"Alteramos tudo})
+
+4. Função de Delete:
+   
+   Substituir um campo (deleteOne):
+	db.pessoas.deleteOne({_id:11})
+
+   Substituir diversos campos (replaceMany):
+	db.pessoas.deleteMany({idade:23})
+
+===========================================================================================
+
+Aula 5: Find Ordenado
+
