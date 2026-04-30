@@ -1,6 +1,6 @@
 Material de Revisão de Banco de Dados Não-Relacional
 
-Aula 1: introdução Mongo DB:
+Aula 21: introdução Mongo DB:
 
 1. Abrir o terminal do Windows;
 
@@ -48,7 +48,7 @@ Aula 1: introdução Mongo DB:
 
 ===========================================================================================
 
-Aula 2: Arrays, Objects, ObjectID e Datas:
+Aula 3: Arrays, Objects, ObjectID e Datas:
 
 1. Incluindo Arrays no campo:
 
@@ -164,7 +164,7 @@ operadores: $gt - "Maior que"; $gte - "Maior ou igual que"
 
 ===========================================================================================
 
-Aula 3: Consultas com o Find:
+Aula 5: Consultas com o Find:
 
 1. Estrutura do Find em MongoDB:
 
@@ -253,7 +253,7 @@ Aula 3: Consultas com o Find:
 
 ===========================================================================================
 
-Aula 4: Métodos CRUD em NoSQL
+Aula 6: Métodos CRUD em NoSQL
 
 1. Create já foi visto anteriormente (insertOne e insertMany) e também o find (find e findOne)
 
@@ -287,5 +287,130 @@ Obs.: É possível alterar mais de um atributo ao mesmo tempo (separando por ví
 
 ===========================================================================================
 
-Aula 5: Find Ordenado
+Aula 7: Find Ordenado
+
+1. Ordenação de busca (find com sort):
+
+	db.collection.find().sort({nome_do_campo: 1})
+
+Obs.: 1 (forma crescente), -1 (forma decrescente)
+
+2. Ordenação de vários campos:
+
+	db.pessoas.find({}, {_id: 0, nome: 1, idade: 1, telefone: 1}).sort(idade: 1, nome: 1) --Ordena idade e nome
+
+3. Limitando resultados (limit)
+
+	db.pessoas.find({}, {_id: 0, nome: 1, idade: 1, telefone: 1}).limit(3) --Mostrará somente 3 elementos da coleção
+
+===========================================================================================
+
+Aula 9: Busca por parte de texto
+
+1. Buscando textos específicos nas coleções:
+
+   - Padrão: 
+	db.pokemon.find({name: "Beedrill"})
+
+   - Buscar parte no começo, meio ou fim: 
+	db.pokemon.find({name: /Beedrill/})
+
+   - Buscar campo que começa com determinado texto: 
+	db.pokemon.find({name: /^Char/},{_id:0,id:1,name:1,types:1})
+
+   - Buscar campo que termina com determinado valor: 
+	db.pokemon.find({name: /ard$/},{_id:0,id:1,name:1,types:1})
+
+   - Ignorar itens que estão no meio das buscas: 
+	db.pokemon.find({name: /Mega*X/},{_id:0,id:1,name:1,types:1})
+  
+2. Comando Aggregate (find mais complexo):
+
+   - Selecionar campos que devem ser exibidos ($Projet):
+	db.pokemon.aggregate([
+		{$project: {_id:0,name:1,types:1,hp:1,defense:1}}
+	])
+
+   - Trocar nome dos campos:
+	db.pokemon.aggregate([
+		{$project: {_id:0,nome: "$name",types:1,hp:1,defense:1}}
+	]) --Substitui "name" para "nome"
+
+   - Alterar todas os nomes para maiúsculas ($toUpper):
+	db.pokemon.aggregate([
+		{$project: {_id:0,nome: {"$toUpper":"$name"},types:1,hp:1,defense:1}}
+	])
+
+   - Definir um limite para exibição ($limit):
+	db.pokemon.aggregate([
+		{$project: {_id:0,nome: "$name",types:1,hp:1,defense:1}},
+		{$limit:2} --Limita por duas coleções
+	])
+
+   - Não trazer todos os registros por um filtro específico ($match):
+	db.pokemon.aggregate([
+		{$match:{types:"fire"}} --Filtra por tipo "fire"
+		{$project: {_id:0,nome: "$name",types:1,hp:1,defense:1}},
+		{$limit:2} --Limita por duas coleções
+	])
+
+   	Com operadores matemáticos:
+	db.pokemon.aggregate([
+		{$match:{types:"fire",hp:{$gt:50}}}, --Filtra por tipo "fire" e hp > 50
+		{$project: {_id:0,nome: "$name",types:1,hp:1,defense:1}},
+		{$limit:2} --Limita por duas coleções
+	])
+
+   - Agrupar campos somando valores, tirando média e contando quantos tem ($group):
+	db.pokemon.aggregate([
+		{$group: {_id:  "$types", total: {$sum: 10}}},
+		{$limit: 10}
+	])
+
+Obs.: Utiliza o "_id" como base para agrupar os registros.
+
+   	Mais de um campo no agrupamento:
+	db.pokemon.aggregate([
+		{$group: {_id: { "tipos":"$types",
+			 	 "força": "$hp" },
+			 total: {$sum: 10}}},
+		{$limit: 10}
+	])
+
+   - Somando valores ($sum):
+	db.pokemon.aggregate([
+		{$group: {_id:  "$types", somaDosAraques: {$sum: "$attack"}}},
+		{$limit: 5}
+	])
+
+   - Retornando a média dos valores ($avg):
+	db.pokemon.aggregate([
+		{$group: {_id:  "$types", mediaDosAtaques: {$avg: "$attack"}}},
+		{$limit: 5}
+	])
+
+   - Mais de um comando na agregação de valores:
+	db.pokemon.aggregate([
+		{$group: {_id:  "$types", 
+				mediaDosAtaques: {$avg: "$attack"},
+				total: {$sum: 1}}},
+		{$limit: 5}
+	])
+
+   - Ordenar valores com ($sort):
+		db.pokemon.aggregate([
+			{$match:{types:"fire"}},
+			{$project: {_id:0,nome: "$name",types:1,hp:1,defense:1}},
+			{$sort: {"nome":1}},
+			{$limit:5} 
+		])
+
+	Ordenando com mais de um grupo:
+		db.pokemon.aggregate([
+			{$match:{types:"fire"}},
+			{$project: {_id:0,nome: "$name",types:1,hp:1,defense:1}},
+			{$sort: {"nome":1,"nome":1}},
+			{$limit:5} 
+		])
+
 
