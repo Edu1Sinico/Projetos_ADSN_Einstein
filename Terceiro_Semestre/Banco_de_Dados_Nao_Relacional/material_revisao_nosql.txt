@@ -1,6 +1,6 @@
 Material de Revisão de Banco de Dados Não-Relacional
 
-introdução Mongo DB:
+Aula 1: introdução Mongo DB:
 
 1. Abrir o terminal do Windows;
 
@@ -44,7 +44,211 @@ introdução Mongo DB:
 
 10. Para incluirmos diversos cadastros em nossa coleção, podemos utilizar o seguinte comando:
 
-	db.pessoas.InsertMany([{"_id": 6,"nome": "Renato Alves", "idade":  29, "telefone": "98555-1234"},{"_id": 7,"nome": "Andressa  Oliveira", "idade":  23, "telefone": "98989-0909"}])
+	db.pessoas.insertMany([{"_id": 6,"nome": "Renato Alves", "idade":  29, "telefone": "98555-1234"},{"_id": 7,"nome": "Andressa  Oliveira", "idade":  23, "telefone": "98989-0909"}])
 
 ===========================================================================================
 
+Aula 2: Arrays, Objects, ObjectID e Datas:
+
+1. Incluindo Arrays no campo:
+
+	db.pessoas.insertOne({"_id":8,"nome":"Marcos Leite","estiloMusical":["Rock","MPB","Clássica"]})
+
+2. Atributo do tipo objeto:
+
+	db.alunos.insertOne({"_id": 1,"nome": "Fernando Fernandes","materias":{"português": 8.0,"matemática": 6.5,"geografia":9.5}})
+
+3. Prefixos de Datas:
+
+	db.testeData.insertOne({"hoje": new Date(),"dataDigitada":new ISODate("2023-02-25"),"dataDigitadaComHora":new ISODate("2023-03-10 08:35")})
+
+4. Retornando o primeiro registro:
+
+	- db.pessoas.findOne() --Retorna apenas um pedido
+	- db.pessoas.findOne()._id --Definindo qual atributo gostaríamos de ver
+	- db.pessoas.findOne()._id.getTimestamp() --Extraindo a data e hora do objectId
+
+5. Criação de um segundo id para consultas:
+
+	db.produtos.insertMany([
+	{
+		"id":1,
+	 	"descricao:"Caneta"
+	 	"valor": 7.5
+	},
+	{
+		"id":2,
+	 	"descricao:"Caderno"
+	 	"valor": 18.00
+	}])
+
+
+6. Exercício Prático: Criando um Banco de Dados e Inserindo Documentos
+
+	1. Banco de dados chamado "biblioteca":
+
+		use biblioteca
+
+	2. Criar uma Collection chamada "livros":
+
+		db.livros.insertMany([
+			{ "titulo": "Dom Casmurro", "autor": "Machado de Assis", "ano": 1899 },
+   			{ "titulo": "1984", "autor": "George Orwell", "ano": 1949 },
+   			{ "titulo": "O Pequeno Príncipe", "autor": "Antoine de Saint-Exupéry", "ano": 1943 } 
+		])
+
+	3. Exibir todos os documentos da collections:
+
+		db.livros.find()
+
+
+7. Exercício Prático: Trabalhando com Dados no MongoDB
+
+	1. Banco de dados chamado "escola":
+
+		use escola
+
+	2. Criar uma collection chamada "alunos":
+
+		db.alunos.insertMany([
+			{ "nome": "Ana Souza", "idade": 17, "nota": 9.5 } 
+			{ "nome": "Carlos Lima", "idade": 16, "nota": 8.7 } 
+			{ "nome": "Beatriz Costa", "idade": 18, "nota": 7.9 } 
+
+		])
+
+	3. Exibir aluno com nota maior que 8:
+
+		db.alunos.find({nota:"{$gt:8"}})
+
+8. Exercício Prático: Gerenciando um Sistema de Pedidos
+
+	1. Banco de dados chamado loja:
+
+		use loja
+
+	2. Criar uma collection chamada "pedidos":
+
+		db.pedidos.insertMany([
+		{
+			"cliente": "João Silva",
+			"data": "2025-02-20",
+			"itens": [
+				{"produto":"Notebook","quantidade": 1,"preco": 4500},
+				{"produtos":"Mouse","quantidade":2,"preco":150}
+			],
+			"total":4000
+		},
+		{
+			"cliente": "Maria Oliveira",
+			"data": "2025-02-18",
+			"itens": [
+				{"produto":"Teclado Mecânico","quantidade": 1,"preco": 350},
+				{"produtos":"Monitor 24","quantidade":1,"preco":1200}
+			],
+			"total":1550
+		}
+		])
+
+
+	3. Consultar pedidos realizado a partir do dia 2025-02-19:
+
+		db.pedidos.find({data:{$gte:"2025-02-19"}})
+
+	4. Buscar pedidos cujo valor total seja maior que 1000:
+
+		db.pedidos.find({total:{$gt:1000}})
+
+Obs.: 
+operadores: $gt - "Maior que"; $gte - "Maior ou igual que"
+
+===========================================================================================
+
+Aula 3: Consultas com o Find:
+
+1. Estrutura do Find em MongoDB:
+
+	Estrutura: find({filtro},{campos})
+
+	Exemplos: 
+	- Com filtro e sem campos:
+
+	db.pessoas.find({_id: 7})
+
+	- Com filtro e campos (escolha dos campos):
+
+	db.pessoas.find({_id: 7},{_id: 0, nome: 1, telefone 1}) -- O número "0" esconde o campo e o número "1" exibe o campo
+
+	- Sem filtro e com campos:
+
+	db.pessoas.find({},{_id: 0, nome: 1, telefone 1})
+
+2. Operador "$exists", permite a busca do "find" sem filtros e com campos, sem correr o risco de puxar campos vazios
+	
+	- Sem o "$exists"
+		db.pessoas.find({},{_id: 0, telefone 1})
+
+	Resultado: [{},{},{},{cidade:"Americana"},{cidade:"Americana}]
+
+	- Com o "$exists"
+		db.pessoas.find({cidade:{$exists: true}},{_id: 0, telefone 1})
+
+	Resultado: [{cidade:"Americana"},{cidade:"Americana}]
+
+3. Filtrando campo na coleçãp
+		
+	Exemplo:
+		db.alunos.find({_id:3})
+		[
+			{
+			_id:3,
+			nome:"Andreia Costa"
+			materiais:
+				{
+				     "Portugues": [5.5, 8, 9, 7.5]
+				     "Matematica": [10, 9, 7.5, 8]
+				     "geografia": [8, 7.5, 6.5, 4]
+				}
+			}		
+		]
+
+	- Filtrar por campo "geografia" da array de materias:
+		db.alunos.find({_id:3},{"materiais.geografia":1})
+
+4. Operadores lógicos e matemáticos no MongoDB
+
+	- "Igual á" é representado como "$eq":
+		db.pessoas.find({_id: {$eq:5}}) --Opcional para igualdade
+
+	- "Maior que" é representado como "$gt":
+		db.pessoas.find({idade:{$gt:23}},{idade:1})
+
+	- "Menor que" é representado por "$lt":
+		db.pessoas.find({idade:{$lt:23]},{idade:1})
+
+	- "Maior igual que" é representado por "$gte"
+		db.pessoas.find({idade:{$gte:23}},{idade:1})
+
+	- "Menor igual que" é representado por "$lte"
+		db.pessoas.find({idade:{$lte:23}},{idade:1})
+	
+	- Selecionar valores que estão entre um conjunto é representado por "$in", caso não queiramos os valores que estão entre um conjunto, utilizamos "$nin"
+		$in -> db.pessoas.find({idade:{$in: [23,25]}},{idade:1})
+	 	$nin -> db.pessoas.find({idade:{$nin: [23,25]}},{idade:1})
+
+	- "Diferente" é representado por "$ne"
+		db.pessoas.find({idade:{$ne:23}},{idade:1})
+
+	- "Operador e" é representado por "$and"
+		db.pessoas.find({$and:[{idade:23},{cidade:"Limeira"}]},{idade:1,cidade:1})
+
+	- "Operador ou" é representado por "$or"
+		db.pessoas.find({$or:[{idade: {$gt:23}},{cidade:"Limeira"}]},{idade:1,cidade:1})
+
+	- "Operador não" é representado por "$not" - reverte o resultado
+		db.pessoas.find({$or:[{idade: {$not: {$gt:23}}},{cidade:"Limeira"}]},{idade:1,cidade:1})
+
+	- "Operador não ou" é representado por "$nor" - reverte o resultado do "$or"
+		db.pessoas.find({$nor:[ {$and:[{idade:23},{cidade:"Limeira"}]}]},{idade:1,cidade:1})
+
+===========================================================================================
