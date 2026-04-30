@@ -252,3 +252,9 @@ Aula 3: Consultas com o Find:
 		db.pessoas.find({$nor:[ {$and:[{idade:23},{cidade:"Limeira"}]}]},{idade:1,cidade:1})
 
 ===========================================================================================
+
+Aula 4: Métodos CRUD em NoSQL
+
+1. Create já foi visto anteriormente (insertOne e insertMany)
+
+2. 
