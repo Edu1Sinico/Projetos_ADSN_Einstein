@@ -1,0 +1,37 @@
+1. banco chamado "ecommerce"
+
+	use ecommerce
+
+2. Criando collection "pedidos": 
+
+db.pedidos.insertMany(
+	{"cliente":"Ana Souza","dataPedido": new ISODate("2024-03-15"),"itens":"Notebook (1x R$ 3500), Mouse (1x R$ 150)","total": 3650.00,"status":"pendente"},
+	{"cliente":"Carlos Lima","dataPedido": new ISODate("2024-03-16"),"itens":"Celular (1x R$ 2500)","total": 2500.00,"status":"enviado"},
+	{"cliente":"Mariana Ferreira","dataPedido": new ISODate("2024-03-17"),"itens":"Monitor (2x R$ 800)","total": 1600.00,"status":"pendente"})
+
+3. Listar pedidos
+
+	db.pedidos.find()
+
+4. Buscar pedidos do "Carlos Lima":
+
+	db.pedidos.find({nome:"Carlos Lima"},{"_id:0"})
+
+5. Listar apenas os pedidos pendentes: 
+
+	db.pedidos.find({status:"pendente"},{"_id:0"})
+
+6. Listar pedidos após: 15/03/2026:
+
+	db.pedidos.find{dataPedido:{$gt:"2024-03-15"}},{"_id:0"})
+
+7. Alterar o status do pedido da Mariana para "enviado":
+
+	db.pedidos.updateOne({nome:"Mariana Ferreira"},{$set: {status:"enviado"}})
+
+	db.pedidos.find({nome:"Mariana Ferreira"},{"_id:0"})
+
+8. Remover pedido do "Carlos Lima":
+
+	db.pedidos.deleteOne({nome:"Carlos Lima"})
+

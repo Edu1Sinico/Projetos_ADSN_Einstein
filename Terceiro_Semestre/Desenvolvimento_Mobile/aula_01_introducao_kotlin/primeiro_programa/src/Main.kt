@@ -59,7 +59,7 @@ fun main() {
     val soma = num1.toInt() + num2.toInt()
     val sub = num1.toInt() - num2.toInt()
     val mult = num1.toInt() * num2.toInt()
-    val div = if (num2.toInt() != 0) num1.toInt() + num2.toInt()
+    val div = if (num2.toInt() != 0) num1.toInt() / num2.toInt()
     else "Impossível dividir por zero."
 
     println("\nSoma: " + soma)
