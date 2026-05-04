@@ -1,7 +1,7 @@
 import kotlin.math.*
 
 fun main() {
-        // Aula 1 - Revisão da Introdução ao Kotlin
+        // Aula 2 - Revisão de Fundamentos do Kotlin
 
         println("\n-----------------------------------------")
 
