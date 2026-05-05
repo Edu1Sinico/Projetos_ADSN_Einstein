@@ -1,7 +1,7 @@
 Guia de Estudos: Desenvolvimento Back-End com C#
 
 1. Visão Geral do Conteúdo:
-
+   
 Pelos slides, o bloco inicial da disciplina trabalha primeiro os fundamentos da linguagem C# e da plataforma .NET, depois entra em Programação Orientada a Objetos e, em seguida, introduz arquitetura do .NET Core e ASP.NET Core. A sequência principal é:
 
 • Aula 2: Fundamentos do C# — Parte 1.
