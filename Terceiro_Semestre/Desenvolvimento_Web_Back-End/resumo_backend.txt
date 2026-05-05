@@ -845,4 +845,315 @@ Cuidados importantes:
 • abuso de static pode dificultar testes e manutenção.
 
 =========================================================================================================================================
+5. Aula 5 — OOP Parte 2
 
+5.1 Herança
+
+Herança permite criar uma classe derivada a partir de uma classe base.
+
+	public class Funcionario : Pessoa{}
+
+A classe Funcionario herda atributos e métodos de Pessoa. Isso evita duplicação e representa uma relação “é um(a)”.
+
+Exemplo conceitual:
+• Funcionário é uma Pessoa.
+• Cachorro é um Animal.
+• Carro é um Veículo.
+
+-------------------------------------------------------
+
+5.2 Palavra-chave base
+
+base permite acessar membros da classe pai ou chamar seu construtor.
+
+	public Funcionario(string nome, decimal salario) : base(nome)
+	{
+    		Salario = salario;
+	}
+
+A ordem de execução dos construtores é:
+• construtor da classe base;
+• construtor da classe derivada.
+
+-------------------------------------------------------
+
+5.3 sealed
+
+sealed impede que uma classe seja herdada.
+
+	public sealed class ContaBancaria{}
+
+Use quando:
+• a classe não foi projetada para herança;
+• deseja impedir alteração de comportamento;
+• quer maior controle de segurança.
+
+-------------------------------------------------------
+
+5.4 Polimorfismo
+
+Polimorfismo permite que objetos diferentes respondam de formas diferentes à mesma chamada.
+
+	Animal a1 = new Cachorro();
+	Animal a2 = new Gato();
+
+	a1.EmitirSom();
+	a2.EmitirSom();
+
+Mesmo método, comportamentos diferentes.
+
+-------------------------------------------------------
+
+5.5 virtual, override e new
+• virtual: método pode ser sobrescrito.
+• override: sobrescreve o método da classe pai.
+• new: oculta o método da classe pai, mas não gera polimorfismo verdadeiro.
+
+Diferença crítica:
+
+Com override, se uma variável do tipo base aponta para um objeto derivado, o método executado é o da classe derivada.
+
+Com new, o método chamado depende do tipo da variável, não do objeto real.
+
+-------------------------------------------------------
+
+5.6 Classes abstratas
+
+Classe abstrata não pode ser instanciada diretamente.
+
+	public abstract class Forma
+	{
+    		public abstract double CalcularArea();
+	}
+
+Ela serve como base para outras classes.
+
+Uma classe abstrata pode ter:
+• métodos abstratos;
+• métodos concretos;
+• propriedades;
+• campos;
+• construtores.
+
+Use quando há uma base comum, mas incompleta.
+
+-------------------------------------------------------
+
+5.7 Interfaces
+
+Interface define um contrato, ou seja, o que uma classe deve fazer.
+
+	public interface INotificador
+	{
+    		void EnviarNotificacao(string mensagem);
+	}
+
+A classe que implementa a interface deve implementar seus membros.
+
+	public class EmailNotificador : INotificador
+	{
+    		public void EnviarNotificacao(string mensagem)
+    		{
+        		Console.WriteLine("Enviando email");
+    		}
+	}
+
+Interfaces são muito importantes porque C# não permite herança múltipla de classes, mas permite implementar múltiplas interfaces.
+
+-------------------------------------------------------
+
+5.8 Classe abstrata vs interface
+
+Conceito			Classe abstrata		Interface
+-------------------------------------------------------------------------
+Palavra-chave			abstract class		interface
+Pode ter implementação?		sim			normalmente define contrato
+Pode ter construtor?		sim			não
+Herança múltipla		não			sim
+Quando usar			relação “é um”		relação “pode fazer”
+
+Exemplo:
+• Animal → classe abstrata para Cachorro, Gato.
+• IVoador → interface para Passaro, Aviao, Drone.
+
+=========================================================================================================================================
+6. Aula 6 — .NET Core e ASP.NET Core
+
+6.1 O que é .NET Core?
+
+.NET Core é a plataforma moderna da Microsoft para construir aplicações multiplataforma. Ele permite desenvolver aplicações que rodam em Windows, Linux e macOS.
+
+Componentes principais:
+• CoreCLR: runtime que executa o código gerenciado.
+• CoreFX: bibliotecas base.
+• SDK: ferramentas de desenvolvimento, compilador, CLI e templates.
+
+-------------------------------------------------------
+
+6.2 Como o C# é compilado e executado
+
+O fluxo apresentado nos slides é:
+1. Código C# (.cs);
+2. Compilador Roslyn;
+3. Código intermediário IL;
+4. JIT Compiler;
+5. Código nativo da máquina;
+6. Execução no CoreCLR.
+
+Esse modelo permite portabilidade: o código intermediário é adaptado em tempo de execução para o sistema operacional e hardware.
+
+-------------------------------------------------------
+
+6.3 ASP.NET Core
+
+ASP.NET Core é o framework web da Microsoft para criar aplicações web e APIs.
+
+Ele pode ser usado para:
+• Web APIs;
+• MVC;
+• Razor Pages;
+• Blazor;
+• SignalR.
+
+No curso, o foco é Web API.
+
+-------------------------------------------------------
+
+6.4 Estrutura de uma Web API
+
+Uma API ASP.NET Core geralmente possui:
+• Controllers/: endpoints da API;
+• Program.cs: configuração principal da aplicação;
+• appsettings.json: configurações gerais;
+• appsettings.Development.json: configurações de desenvolvimento;
+• .csproj: arquivo do projeto;
+• Swagger: documentação e teste dos endpoints.
+
+-------------------------------------------------------
+
+6.5 Program.cs
+
+O Program.cs é o coração da aplicação.
+
+Ele faz três coisas principais:
+1. configura serviços;
+2. constrói a aplicação;
+3. configura middlewares e executa a aplicação.
+
+Exemplo conceitual:
+
+	builder.Services.AddControllers();
+	builder.Services.AddSwaggerGen();
+
+	var app = builder.Build();
+
+	app.UseSwagger();
+	app.UseHttpsRedirection();
+	app.UseAuthorization();
+	app.MapControllers();
+
+	app.Run();
+
+A ordem dos middlewares importa.
+
+-------------------------------------------------------
+
+6.6 Middlewares
+
+Middlewares são componentes que formam o pipeline de requisição HTTP.
+
+Fluxo:
+
+	Request → Middleware 1 → Middleware 2 → Endpoint
+	Response ← Middleware 1 ← Middleware 2 ← Endpoint
+
+Cada middleware pode:
+• processar a requisição;
+• passar para o próximo;
+• interromper e retornar uma resposta.
+
+Exemplos:
+• UseHttpsRedirection();
+• UseRouting();
+• UseCors();
+• UseAuthentication();
+• UseAuthorization();
+• MapControllers().
+
+Importante: autenticação deve vir antes de autorização.
+
+-------------------------------------------------------
+
+6.7 Dependency Injection
+
+Dependency Injection, ou injeção de dependência, é um padrão em que uma classe não cria suas dependências diretamente. Ela as recebe pelo construtor.
+
+Sem DI:
+
+	private ProdutoRepository repo = new ProdutoRepository();
+
+Com DI:
+
+	private readonly IProdutoRepository repo;
+
+	public ProdutoController(IProdutoRepository repo)
+	{
+		this.repo = repo;
+	}
+
+Vantagens:
+• reduz acoplamento;
+• facilita testes;
+• melhora manutenção;
+• separa responsabilidades.
+
+-------------------------------------------------------
+
+6.8 Lifetimes da DI
+
+Os três ciclos de vida principais são:
+
+Lifetime		Como funciona				Uso comum
+-----------------------------------------------------------------------------------
+Transient		cria uma nova instância sempre		serviços leves
+Scoped			uma instância por requisição HTTP	repositories, DbContext
+Singleton		uma instância para toda aplicação	configurações, cache
+
+Para APIs, Scoped é muito usado para repositórios e contexto de banco de dados.
+
+=========================================================================================================================================
+
+7. Resumo final bem direto para consulta rápida
+
+C# é uma linguagem moderna da Microsoft, fortemente tipada e muito usada com a plataforma .NET.
+
+.NET Framework é antigo, focado em Windows. .NET Core/.NET 5+ é moderno, multiplataforma, modular e open-source.
+
+Classe é o molde. Objeto é a instância criada a partir da classe.
+
+POO organiza o sistema em objetos que possuem dados e comportamentos.
+
+Os quatro pilares são:
+• Abstração: representar apenas o essencial.
+• Encapsulamento: proteger dados internos.
+• Herança: reutilizar estrutura de uma classe base.
+• Polimorfismo: permitir comportamentos diferentes para a mesma chamada.
+
+Fields são campos internos, geralmente private.
+Properties são formas controladas de acessar dados, geralmente public.
+
+Construtor inicializa o objeto e garante estado válido.
+
+Método de instância precisa de objeto.
+Método estático pertence à classe e não precisa de new.
+
+this representa o objeto atual.
+
+Herança representa relação “é um”.
+Interface representa contrato, algo que a classe “pode fazer”.
+
+Classe abstrata pode ter implementação e serve como base.
+Interface define contrato e permite múltiplas implementações.
+
+Middleware processa requisições HTTP em sequência.
+Dependency Injection permite que classes recebam dependências em vez de criá-las diretamente.
