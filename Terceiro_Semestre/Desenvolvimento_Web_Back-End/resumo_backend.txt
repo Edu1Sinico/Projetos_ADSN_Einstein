@@ -1,0 +1,848 @@
+Guia de Estudos: Desenvolvimento Back-End com C#
+
+1. Visão Geral do Conteúdo:
+
+Pelos slides, o bloco inicial da disciplina trabalha primeiro os fundamentos da linguagem C# e da plataforma .NET, depois entra em Programação Orientada a Objetos e, em seguida, introduz arquitetura do .NET Core e ASP.NET Core. A sequência principal é:
+
+• Aula 2: Fundamentos do C# — Parte 1.
+• Aula 3: Fundamentos do C# — Parte 2.
+• Aula 4: OOP — Parte 1, com classes, objetos, properties, fields, encapsulamento, construtores, métodos, this e static.
+• Aula 5: OOP — Parte 2, com herança, polimorfismo, classes abstratas e interfaces.
+• Aula 6: Introdução ao .NET Core e ASP.NET Core, arquitetura, Web API, middlewares e injeção de dependência.
+
+=========================================================================================================================================
+2. Aula 2 — Fundamentos do C# Parte 1
+
+2.1 História e evolução do C# e .NET
+
+O C# surgiu junto com o ecossistema .NET. A linha do tempo dos slides mostra a evolução da plataforma:
+
+• 2002: C# 1.0 e .NET Framework, inicialmente focado apenas em Windows.
+• 2015/2016: surgimento do .NET Core, com proposta multiplataforma.
+• 2020: .NET 5, unificando a ideia de .NET Framework e .NET Core em uma plataforma moderna.
+• 2021: .NET 6, versão LTS.
+• 2022: .NET 7.
+• 2023/2024: .NET 8, versão LTS utilizada no curso.
+
+A diferença principal é que o .NET Framework era mais antigo, monolítico e voltado para Windows, enquanto o .NET Core / .NET 5+ é multiplataforma, modular, open-source e com melhor desempenho. Para prova, uma pergunta comum seria:
+
+Qual a principal vantagem do .NET Core/.NET 5+ em relação ao .NET Framework?
+Resposta: ser multiplataforma, moderno, modular, open-source e mais adequado para aplicações atuais, incluindo APIs, cloud e containers.
+
+-------------------------------------------------------
+
+2.2 Tipos de dados primitivos
+
+Os tipos básicos apresentados foram:
+
+• int: números inteiros.
+• double: números decimais com ponto flutuante.
+• decimal: decimal mais preciso, muito usado para dinheiro.
+• string: texto.
+• bool: verdadeiro ou falso.
+• char: caractere único.
+• var: tipo inferido pelo compilador.
+
+A diferença importante entre double e decimal é que decimal é mais indicado para valores financeiros, pois evita problemas de precisão em cálculos monetários.
+
+-------------------------------------------------------
+
+2.3 Nullables
+
+Em C#, tipos de valor como int, double, bool normalmente não aceitam null. Para permitir valor nulo, usa-se ?, por exemplo:
+
+	int? numero = null;
+	string? nome = null;
+
+Isso é útil quando um dado pode ou não existir, como valores opcionais, campos vindos do banco de dados ou parâmetros não obrigatórios.
+
+-------------------------------------------------------
+
+2.4 Variáveis, constantes e boas práticas
+
+Uma variável guarda um valor que pode mudar. Uma constante guarda um valor fixo.
+
+	int idade = 25;
+	string nome = "João";
+	const double PI = 3.14159;
+
+Boas práticas importantes:
+• usar nomes descritivos;
+• usar camelCase para variáveis;
+• usar constantes para valores fixos;
+• usar var quando o tipo for óbvio.
+
+-------------------------------------------------------
+
+2.5 Operadores
+
+Os principais operadores estudados:
+
+• Aritméticos: +, -, *, /, %.
+• Relacionais: ==, !=, >, <, >=, <=.
+• Lógicos: &&, ||, !.
+• Atribuição: =, +=, -=, *=, /=.
+• Ternário: condição compacta.
+
+Exemplo de ternário:
+
+	string resultado = idade >= 18 ? "Maior de idade" : "Menor de idade";
+
+O ternário funciona como um if/else simplificado.
+
+-------------------------------------------------------
+
+2.6 Estruturas de controle
+
+As estruturas de controle permitem tomar decisões no código.
+
+	if (idade >= 18)
+	{
+    		Console.WriteLine("Maior de idade");
+	}
+	else
+	{
+    		Console.WriteLine("Menor de idade");
+	}
+
+O switch é útil quando há várias possibilidades fixas, como opções de menu.
+
+	switch (opcao)
+	{
+    		case 1:
+		        Console.WriteLine("Cadastrar");
+        		break;
+    		case 2:
+        		Console.WriteLine("Listar");
+		        break;
+		default:
+		        Console.WriteLine("Opção inválida");
+        		break;
+	}
+
+-------------------------------------------------------
+
+2.7 Estruturas de repetição
+
+Os loops permitem repetir blocos de código:
+• for: usado quando se sabe a quantidade de repetições.
+• while: repete enquanto uma condição for verdadeira.
+• do while: executa pelo menos uma vez.
+• foreach: percorre coleções sem precisar controlar índice.
+
+Exemplo:
+
+	foreach (string nome in nomes)
+	{
+    		Console.WriteLine(nome);
+	}
+
+=========================================================================================================================================
+3. Aula 3 — Fundamentos do C# Parte 2
+
+3.1 Arrays
+
+Array é uma estrutura com tamanho fixo e elementos do mesmo tipo.
+
+	int[] numeros = { 1, 2, 3, 4, 5 };
+
+Características importantes:
+• tamanho fixo;
+• índice começa em 0;
+• todos os elementos são do mesmo tipo;
+• acesso por índice.
+
+-------------------------------------------------------
+
+3.2 Arrays multidimensionais e jagged arrays
+
+Um array multidimensional funciona como uma matriz:
+
+	int[,] matriz = new int[3, 3];
+
+Já o jagged array é um array de arrays, onde cada linha pode ter tamanho diferente:
+
+	int[][] jagged = new int[3][];
+
+Diferença importante para prova:
+
+• int[,] representa uma matriz regular.
+• int[][] representa arrays internos com tamanhos possivelmente diferentes.
+
+-------------------------------------------------------
+
+3.3 Coleções genéricas
+
+As coleções mais importantes dos slides foram:
+
+List<T>
+
+Lista dinâmica, diferente do array, pois pode crescer ou diminuir.
+
+	List<string> nomes = new List<string>();
+	nomes.Add("João");
+	nomes.Remove("João");
+
+Use List<T> quando a quantidade de elementos pode variar.
+
+Dictionary<TKey, TValue>
+
+Estrutura de chave e valor.
+
+	Dictionary<string, int> idades = new Dictionary<string, int>();
+	idades["João"] = 25;
+
+Use quando precisar buscar algo por uma chave única, como CPF, ID ou e-mail.
+
+HashSet<T>
+
+Coleção que não permite duplicados. Útil para garantir unicidade.
+
+Queue<T>
+
+Fila, com comportamento FIFO: o primeiro que entra é o primeiro que sai.
+
+Stack<T>
+
+Pilha, com comportamento LIFO: o último que entra é o primeiro que sai.
+
+-------------------------------------------------------
+
+3.4 Strings e StringBuilder
+
+Strings podem ser manipuladas com métodos como:
+• Length
+• ToUpper()
+• ToLower()
+• Substring()
+• Replace()
+• Split()
+• Trim()
+• Contains()
+
+A interpolação de strings permite escrever textos com variáveis de forma mais limpa:
+
+	string msg = $"Olá, {nome}!";
+
+O StringBuilder é mais eficiente quando há muitas concatenações, principalmente dentro de loops.
+
+-------------------------------------------------------
+
+3.5 Métodos e funções
+
+Métodos representam ações ou comportamentos.
+
+	int Somar(int a, int b)
+	{
+    		return a + b;
+	}
+
+Um método pode:
+• retornar valor;
+• não retornar nada, usando void;
+• receber parâmetros;
+• ter parâmetros opcionais;
+• usar ref e out;
+• ter sobrecarga.
+
+-------------------------------------------------------
+
+3.6 Sobrecarga de métodos
+
+Sobrecarga ocorre quando vários métodos têm o mesmo nome, mas assinaturas diferentes.
+
+	int Somar(int a, int b)
+	double Somar(double a, double b)
+	int Somar(int a, int b, int c)
+
+O compilador escolhe qual método executar com base nos parâmetros passados.
+
+-------------------------------------------------------
+
+3.7 Tratamento de exceções
+
+O tratamento de exceções usa try, catch e finally.
+
+	try
+	{
+    		int resultado = 10 / 0;
+	}
+	catch (DivideByZeroException)
+	{
+    		Console.WriteLine("Não pode dividir por zero!");
+	}
+	finally
+	{
+    		Console.WriteLine("Finalizando...");
+	}
+
+Conceitos importantes:
+• try: bloco que pode gerar erro.
+• catch: captura e trata o erro.
+• finally: sempre executa, com ou sem erro.
+• exceções específicas devem vir antes de Exception genérica.
+
+-------------------------------------------------------
+
+3.8 LINQ
+
+LINQ significa Language Integrated Query. Ele permite fazer consultas em coleções usando métodos como:
+• Where(): filtra.
+• Select(): transforma.
+• OrderBy(): ordena.
+• First(): pega o primeiro.
+• Any(): verifica se existe.
+• Count(): conta.
+• Sum(): soma.
+• Average(): média.
+
+Exemplo:
+
+	var pares = numeros.Where(n => n % 2 == 0).ToList();
+
+LINQ deixa o código mais limpo, legível e muito usado em aplicações .NET.
+
+=========================================================================================================================================
+
+4. Aula 4 — OOP Parte 1
+
+Foco principal para sua prova
+
+Esta é a aula que você pediu para priorizar. Ela trata da base da Programação Orientada a Objetos: paradigma, classes, objetos, fields, properties, encapsulamento, construtores, métodos, this e static.
+
+-------------------------------------------------------
+
+4.1 O que é Programação Orientada a Objetos?
+
+Programação Orientada a Objetos, ou OOP/POO, é um paradigma de programação, ou seja, uma forma de pensar e organizar o código.
+
+A ideia principal é modelar o mundo real usando objetos. Cada objeto possui:
+• características, chamadas de atributos ou propriedades;
+• comportamentos, chamados de métodos.
+
+Exemplo:
+
+Uma pessoa pode ter:
+• nome;
+• idade;
+• CPF;
+• e-mail.
+
+E pode executar ações:
+
+• apresentar-se;
+• atualizar cadastro;
+• validar idade.
+
+O objetivo da POO é organizar sistemas complexos, reaproveitar código, facilitar manutenção e permitir evolução do sistema.
+
+-------------------------------------------------------
+
+4.2 Os 4 pilares da POO
+
+Os slides apresentam os quatro pilares:
+
+1. Abstração
+
+Abstração significa focar apenas no que é essencial para o contexto do sistema.
+
+Exemplo: em um sistema de veículos, a classe Carro talvez precise de:
+• marca;
+• modelo;
+• ano;
+• cor;
+• placa.
+
+Mas provavelmente não precisa de informações como peso dos parafusos ou tipo exato da tinta.
+
+Em outras palavras: abstrair é representar algo real no código, mas mantendo apenas os dados e comportamentos relevantes.
+
+
+
+2. Encapsulamento
+
+Encapsulamento é proteger os dados internos de uma classe e permitir acesso controlado por meio de propriedades e métodos.
+
+Exemplo ruim:
+
+	public decimal saldo;
+
+Qualquer parte do sistema poderia alterar o saldo diretamente, inclusive colocando valor negativo.
+
+Exemplo melhor:
+
+	private decimal saldo;
+
+	public decimal Saldo
+	{
+  		get { return saldo; }
+   		private set { saldo = value; }
+	}
+
+Assim, o saldo fica protegido e só pode ser alterado por métodos controlados, como Depositar() ou Sacar().
+
+
+
+3. Herança
+
+Herança permite que uma classe reaproveite atributos e métodos de outra classe. Esse assunto aparece com mais detalhes na Aula 5, mas já faz parte dos pilares da POO.
+
+Exemplo conceitual:
+• Pessoa é uma classe base.
+• Funcionario herda de Pessoa.
+• Todo funcionário é uma pessoa, então a relação é “é um(a)”.
+
+
+
+4. Polimorfismo
+
+Polimorfismo significa “muitas formas”. É quando objetos diferentes respondem de formas diferentes à mesma chamada de método.
+
+Exemplo conceitual:
+
+	Animal animal = new Cachorro();
+	animal.EmitirSom();
+
+Mesmo chamando EmitirSom(), o comportamento pode variar conforme o tipo real do objeto.
+
+-------------------------------------------------------
+
+4.3 Classe e objeto
+
+Essa diferença é essencial para prova.
+
+Classe
+
+Classe é um molde, modelo ou template. Ela define como um objeto deve ser.
+
+	public class Pessoa
+	{
+    		public string Nome { get; set; }
+    		public int Idade { get; set; }
+	}
+
+A classe sozinha é apenas a definição. Ela não representa uma pessoa específica ainda.
+
+Objeto
+
+Objeto é a instância da classe. Ele é criado com new.
+
+	Pessoa pessoa1 = new Pessoa();
+
+Agora existe um objeto real na memória. Os slides reforçam a analogia:
+
+Classe = forma de bolo
+Objeto = bolo pronto
+
+Uma classe pode criar infinitos objetos, e cada objeto possui sua própria memória e seus próprios valores.
+
+-------------------------------------------------------
+
+4.4 Anatomia de uma classe
+
+Uma classe em C# geralmente possui:
+
+	public class Pessoa
+	{
+    		private string nome;
+
+    		public string Nome { get; set; }
+
+    		public Pessoa(string nome)
+    		{
+        		Nome = nome;
+    		}
+
+    		public void Apresentar()
+    		{
+        		Console.WriteLine($"Olá, sou {Nome}");
+    		}
+	}
+
+Elementos principais:
+• fields/campos: dados internos.
+• properties/propriedades: forma controlada de acessar dados.
+• construtores: inicializam o objeto.
+• métodos: comportamentos da classe.
+
+-------------------------------------------------------
+
+4.5 Fields vs Properties
+
+Essa parte é muito importante.
+
+Fields
+
+Fields são campos internos da classe. Normalmente ficam como private.
+
+	private string nome;
+	private decimal preco;
+	private int estoque;
+
+Características:
+• armazenam dados internos;
+• geralmente são privados;
+• usam camelCase;
+• não possuem validação automática;
+• não devem ser expostos diretamente.
+
+Exemplo ruim:
+
+	public decimal preco;
+
+Isso viola o encapsulamento, pois qualquer parte do sistema pode alterar diretamente o valor.
+
+
+
+Properties
+
+Properties são a interface pública para acessar ou alterar dados de forma controlada.
+
+	private decimal preco;
+
+	public decimal Preco
+	{
+    		get { return preco; }
+    		set
+    		{
+        		if (value < 0)
+            			throw new ArgumentException("Preço não pode ser negativo!");
+
+        		preco = value;
+    		}
+	}
+
+Características:
+• geralmente são públicas;
+• usam PascalCase;
+• podem ter validação;
+• protegem o campo interno;
+• são recomendadas para expor dados.
+
+Resumo para prova:
+
+Conceito	     	Field			Property
+-------------------------------------------------------------------------
+Uso	        	dado interno		acesso externo controlado
+Visibilidade comum	private			public
+Validação		não diretamente		sim, no set
+Nomenclatura		camelCase		PascalCase
+Boa prática		esconder		expor com controle
+
+-------------------------------------------------------
+
+4.6 Auto-properties
+
+Auto-property é uma forma resumida de criar propriedade sem escrever manualmente o campo privado.
+
+	public string Nome { get; set; }
+	public int Idade { get; set; }
+
+O compilador cria o campo internamente nos bastidores. É uma forma moderna, limpa e muito comum em C#.
+
+Use auto-property quando não há necessidade de validação personalizada.
+
+-------------------------------------------------------
+
+4.7 Property com validação
+
+Quando é necessário proteger uma regra de negócio, usamos property completa com validação.
+
+	private int estoque;
+
+	public int Estoque
+	{
+    		get { return estoque; }
+    		set
+    		{
+        		if (value < 0)
+		            throw new ArgumentException("Estoque não pode ser negativo!");
+
+		        estoque = value;
+    		}
+	}
+
+Essa abordagem impede que o objeto fique em estado inválido.
+
+Exemplo de estado inválido:
+• preço negativo;
+• estoque negativo;
+• idade menor que zero;
+• CPF vazio;
+• e-mail sem formato válido.
+
+-------------------------------------------------------
+
+4.8 Read-only properties e init
+
+Os slides mostram propriedades somente leitura.
+
+	public string CPF { get; init; }
+	public DateTime DataCriacao { get; }
+
+Diferenças:
+• get; set;: pode ler e alterar depois.
+• get; private set;: pode ler fora, mas só alterar dentro da classe.
+• get; init;: só pode definir na inicialização do objeto.
+• get;: somente leitura depois de definido, geralmente no construtor.
+
+Esse conteúdo é importante porque aparece muito em modelos de domínio, entidades e DTOs.
+
+-------------------------------------------------------
+
+4.9 Construtores
+
+Construtor é um método especial usado para inicializar objetos.
+
+Características:
+• tem o mesmo nome da classe;
+• não possui tipo de retorno;
+• é executado automaticamente ao usar new;
+• pode receber parâmetros;
+• pode haver vários construtores;
+• serve para garantir que o objeto comece em estado válido.
+
+Exemplo:
+
+	public class Produto
+	{
+    		public string Nome { get; set; }
+    		public decimal Preco { get; set; }
+
+    		public Produto(string nome, decimal preco)
+    		{
+        		Nome = nome;
+        		Preco = preco;
+    		}
+	}
+
+Ao executar:
+
+	Produto p = new Produto("Notebook", 3000);
+
+O construtor é chamado automaticamente.
+
+-------------------------------------------------------
+
+4.10 Tipos de construtores
+Construtor padrão
+
+Não recebe parâmetros.
+
+	public Produto()
+	{
+    		Nome = "Sem nome";
+    		Preco = 0;
+	}
+
+Construtor parametrizado
+
+Recebe valores para inicializar o objeto.
+
+	public Produto(string nome, decimal preco)
+	{
+    		Nome = nome;
+    		Preco = preco;
+	}
+
+Construtor com validação
+
+Garante que o objeto não nasça inválido.
+
+	public Produto(string nome, decimal preco)
+	{
+    		if (preco < 0)
+        		throw new ArgumentException("Preço inválido!");
+
+		Nome = nome;
+    		Preco = preco;
+	}
+
+-------------------------------------------------------
+
+4.11 Sobrecarga de construtores
+
+Sobrecarga de construtores ocorre quando uma classe tem mais de um construtor com parâmetros diferentes.
+
+	public Cliente(string nome)
+	{
+    		Nome = nome;
+	}
+
+	public Cliente(string nome, string email)
+	{
+    		Nome = nome;
+    		Email = email;
+	}
+
+	public Cliente(string nome, string email, string cpf)
+	{
+    		Nome = nome;
+    		Email = email;
+    		CPF = cpf;
+	}
+
+O C# escolhe automaticamente o construtor com base nos argumentos passados.
+
+-------------------------------------------------------
+
+4.12 Encapsulamento em detalhes
+
+Encapsular é esconder a implementação interna e expor apenas o necessário.
+
+Uma classe bem encapsulada:
+• deixa campos como private;
+• expõe propriedades com validação;
+• usa métodos públicos para ações válidas;
+• usa métodos privados para lógicas internas;
+• impede alterações indevidas.
+
+Exemplo conceitual:
+
+	public class ContaBancaria
+	{
+	 	private decimal saldo;
+
+    		public decimal Saldo
+    		{
+        		get { return saldo; }
+    		}
+
+    		public void Depositar(decimal valor)
+    		{
+        		if (valor > 0)
+            			saldo += valor;
+    		}
+	}
+
+O usuário da classe não altera saldo diretamente. Ele precisa usar o método Depositar, que contém regra de validação.
+
+-------------------------------------------------------
+
+4.13 Modificadores de acesso
+
+Os modificadores controlam onde um membro pode ser acessado.
+
+Modificador			Significado
+-------------------------------------------------------------------------
+public				acessível de qualquer lugar
+private				acessível apenas dentro da própria classe
+protected			acessível na classe e nas classes filhas
+internal			acessível dentro do mesmo projeto/assembly
+protected internal		acessível no mesmo projeto ou por herança
+private protected		acessível no mesmo projeto e por herança
+
+A regra de ouro dos slides é: use o mais restritivo possível. Campos normalmente devem ser private; métodos e properties podem ser public quando fazem parte da interface da classe.
+
+-------------------------------------------------------
+
+4.14 Métodos
+
+Métodos representam comportamentos da classe.
+
+	public int Somar(int a, int b)
+	{
+    		return a + b;
+	}
+
+Um método pode:
+• retornar valor;
+• ser void;
+• receber parâmetros;
+• ser público ou privado;
+• conter validações;
+• representar ações de um objeto.
+
+Exemplo de método privado:
+
+	private bool ValidarNumero(int numero)
+	{
+    		return numero > 0;
+	}
+
+Métodos privados são usados para lógicas internas que não devem ser acessadas fora da classe.
+
+-------------------------------------------------------
+
+4.15 Métodos de instância vs métodos estáticos
+Método de instância
+
+Precisa de objeto.
+
+	Pessoa p = new Pessoa();
+	p.Apresentar();
+
+Ele trabalha com dados daquele objeto específico.
+
+Método estático
+
+Pertence à classe, não ao objeto.
+
+	int resultado = Matematica.Somar(5, 3);
+
+Não precisa criar new.
+
+Resumo:
+
+Tipo		Pertence a	Precisa de new?		Exemplo
+----------------------------------------------------------------------
+instância	objeto		sim			p.Apresentar()
+estático	classe		não			Math.Sqrt(25)
+
+-------------------------------------------------------
+
+4.16 Palavra-chave this
+
+this representa o objeto atual.
+
+É muito usado quando o nome do parâmetro é igual ao nome do campo:
+
+	private string nome;
+
+	public Produto(string nome)
+	{
+    		this.nome = nome;
+	}
+
+Aqui:
+• this.nome é o campo da classe;
+• nome é o parâmetro recebido.
+
+Também pode ser usado para chamar outro construtor:
+
+	public Produto(string nome) : this(nome, 0){}
+
+E pode ser usado para retornar o próprio objeto, permitindo encadeamento de métodos.
+
+-------------------------------------------------------
+
+4.17 Sobrecarga de métodos
+
+Assim como construtores, métodos também podem ser sobrecarregados.
+
+	public int Somar(int a, int b)
+	public int Somar(int a, int b, int c)
+	public double Somar(double a, double b)
+
+O nome é o mesmo, mas os parâmetros mudam. Isso aumenta a flexibilidade da classe.
+
+-------------------------------------------------------
+
+4.18 Palavra-chave static
+
+static indica que o membro pertence à classe, e não a um objeto específico.
+
+Pode ser usado em:
+• métodos utilitários;
+• constantes;
+• contadores globais;
+• factory methods;
+• membros compartilhados.
+
+Cuidados importantes:
+• membro estático não acessa diretamente membros de instância;
+• método estático não usa this;
+• abuso de static pode dificultar testes e manutenção.
+
+=========================================================================================================================================
+
