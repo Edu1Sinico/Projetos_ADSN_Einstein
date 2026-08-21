@@ -1,0 +1,12 @@
+Atalhos do Blender
+
+1. Atalhos no Object Mode
+G - Posição
+S - Escala
+R - Rotação
+
+2. Modos edição e Objeto (Atalho tab)
+
+3.
+Z - modo sólido e aramaico 
+
